@@ -1,1 +1,9 @@
-/* You can add global styles to this file, and also import other style files */
+@import "assets/css/variables.scss";
+@import "assets/css/mixins.scss";
+@import "assets/css/global.scss";
+@import "assets/css/navbar.scss";
+@import "assets/css/masthead.scss";
+@import "assets/css/portfolio.scss";
+@import "assets/css/contact.scss";
+@import "assets/css/footer.scss";
+@import "assets/css/bootstrap-overrides.scss";

@@ -1,0 +1,15 @@
+@import "../../assets/css/variables.scss";
+@import "../../assets/css/mixins.scss";
+@import "../../assets/css/global.scss";
+
+a {
+    display: inline-block;
+    height: 3.5rem;
+    width: 3.5rem;
+    background-color: $primary;
+    color: $white !important;
+    border-radius: 100%;
+    text-align: center;
+    font-size: 1.5rem;
+    line-height: 3.5rem;
+}

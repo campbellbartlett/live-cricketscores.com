@@ -1,0 +1,30 @@
+.game-modal {
+  .game-modal-dialog {
+    z-index: 2;
+    -moz-box-shadow: 0 0 3rem 1rem fade-out(black, .5);
+    -webkit-box-shadow: 0 0 3rem 1rem fade-out(black, .5);
+    box-shadow: 0 0 3rem 1rem fade-out(black, .5);
+    .close-button {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      i {
+        line-height: 38px;
+      }
+    }
+    .btn {
+      width: $close-button-width;
+    }
+    h2 {
+      font-size: 2rem;
+    }
+  }
+  @media(min-width: 768px) {
+    .game-modal-dialog {
+      height: 80vh;
+      h2 {
+        font-size: 3rem;
+      }
+    }
+  }
+}
