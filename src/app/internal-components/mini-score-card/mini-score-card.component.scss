@@ -1,0 +1,16 @@
+@import "../../../assets/css/variables.scss";
+@import "../../../assets/css/mixins.scss";
+@import "../../../assets/css/global.scss";
+
+.score-card-header-image {
+    background-image: url('/assets/img/cricket-166904_640.jpg');
+    background-size: cover;
+}
+
+.background-secondary {
+    background-color: $secondary;
+}
+
+.text-color-primary {
+    color: $primary;
+}
