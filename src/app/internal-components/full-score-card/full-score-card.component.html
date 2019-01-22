@@ -1,88 +1,25 @@
-<div class="game-modal mfp-hide" id="game-modal-1">
-  <div class="game-modal-dialog bg-white">
-    <div class="card h-100 d-flex flex-column justify-content-between">
-      <div class="card-header text-secondary text-uppercase text-center">
-        <h2>AUS VS IND</h2>
+<div mat-dialog-title class="card-header text-secondary text-uppercase text-center">
+  <h2>{{data.match.homeTeam.shortName}} VS {{data.match.awayTeam.shortName}}</h2>
+</div>
+<div mat-dialog-content>
+  <div *ngIf="scorecard">
+    <mat-tab-group mat-align-tabs="center">
+      <div *ngFor="let inning of scorecard.innings">
+        <mat-tab label="{{inning.name}}">
+          <table mat-table [dataSource]="inning.batsmen">
+            <ng-container matColumnDef="name">
+              <th mat-header-cell *matHeaderCellDef>name</th>
+              <td mat-cell *matCellDef="let batsmen">{{batsmen.name}}</td>
+            </ng-container>
+            <ng-container matColumnDef="runs">
+                <th mat-header-cell *matHeaderCellDef>Runs</th>
+                <td mat-cell *matCellDef="let batsmen">{{batsmen.runs}}</td>
+              </ng-container>
+            <tr mat-header-row *matHeaderRowDef="['name','runs']"></tr>
+            <tr mat-row *matRowDef="let batsmen; columns: ['name','runs'];"></tr>
+          </table>
+        </mat-tab>
       </div>
-      <a class="close-button d-none d-md-block game-modal-dismiss" href="#">
-        <i class="fa fa-3x fa-times"></i>
-      </a>
-      <div class="row">
-        <div class="col-12 text-center scroll">
-          <p>score</p>
-          <p>score</p>
-          <p>score</p>
-          <p>score</p>
-          <p>score</p>
-          <p>score</p>
-          <p>score</p>
-          <p>score</p>
-          <p>score</p>
-          <p>score</p>
-          <p>score</p>
-          <p>score</p>
-          <p>score</p>
-          <p>score</p>
-          <p>score</p>
-          <p>score</p>
-          <p>score</p>
-          <p>score</p>
-          <p>score</p>
-          <p>score</p>
-          <p>score</p>
-          <p>score</p>
-          <p>score</p>
-          <p>score</p>
-          <p>score</p>
-          <p>score</p>
-          <p>score</p>
-          <p>score</p>
-          <p>score</p>
-          <p>score</p>
-          <p>score</p>
-          <p>score</p>
-          <p>score</p>
-          <p>score</p>
-          <p>score</p>
-          <p>score</p>
-          <p>score</p>
-          <p>score</p>
-          <p>score</p>
-          <p>score</p>
-          <p>score</p>
-          <p>score</p>
-          <p>score</p>
-          <p>score</p>
-          <p>score</p>
-          <p>score</p>
-          <p>score</p>
-          <p>score</p>
-          <p>score</p>
-          <p>score</p>
-          <p>score</p>
-          <p>score</p>
-          <p>score</p>
-          <p>score</p>
-          <p>score</p>
-          <p>score</p>
-          <p>score</p>
-          <p>score</p>
-          <p>score</p>
-          <p>score</p>
-          <p>score</p>
-          <p>score</p>
-          <p>score</p>
-          <p>score</p>
-          <p>score</p>
-          <p>score</p>
-          <p>score</p>
-          <p>score</p>
-          <p>score</p>
-          <p>score</p>
-          <p>score</p>
-          <p>score</p>
-          <p>score</p>
-        </div>
-      </div>
-    </div>
+    </mat-tab-group>
   </div>
+</div>

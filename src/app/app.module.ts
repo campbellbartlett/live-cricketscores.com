@@ -19,7 +19,10 @@ import {
   MatMenuModule,
   MatToolbarModule,
   MatIconModule,
-  MatCardModule
+  MatCardModule,
+  MatDialogModule,
+  MatTabsModule,
+  MatTableModule
 } from '@angular/material';
 
 @NgModule({
@@ -40,9 +43,13 @@ import {
     MatToolbarModule,
     MatIconModule,
     MatCardModule,
+    MatDialogModule,
+    MatTabsModule,
+    MatTableModule,
     AppRoutingModule,
     HttpClientModule
   ],
+  entryComponents: [FullScoreCardComponent],
   bootstrap: [AppLayoutComponent],
   providers: [],
   schemas: [

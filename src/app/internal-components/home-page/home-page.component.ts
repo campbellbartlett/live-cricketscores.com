@@ -19,9 +19,7 @@ export class HomePageComponent implements OnInit {
     console.log("Getting matches");
     this.cricketDataService.getCurrentMatches()
     .then(matchResponse => {
-      console.log("Finished getting matches");
       this.matches = matchResponse.matchList.matches;
-      console.log(matchResponse.matchList);
     });
   }
 

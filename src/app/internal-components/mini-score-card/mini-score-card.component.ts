@@ -1,5 +1,8 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
+
 import { Match } from 'src/app/match';
+import { FullScoreCardComponent } from '../full-score-card/full-score-card.component';
 
 @Component({
   selector: 'app-mini-score-card',
@@ -10,12 +13,17 @@ export class MiniScoreCardComponent implements OnInit {
 
   @Input("match") match: Match;
 
-  constructor() { }
+  constructor(public dialog: MatDialog) { }
 
   ngOnInit() {
-    console.log("Created score card with match")
-    console.log(this.match);
-    console.log(this.match.venue.name)
+  }
+
+  showDialog() {
+    this.dialog.open(FullScoreCardComponent, {
+      width: '80%',
+      height: '80%',
+      data: { match: this.match }
+    });
   }
 
 }

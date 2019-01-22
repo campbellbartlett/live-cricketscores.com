@@ -31,7 +31,7 @@ class Team {
     "teamColour": string;
 }
 
-class Series {
+export class Series {
     "id": number;
     "name": string;
     "shortName": string;

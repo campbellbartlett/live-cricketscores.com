@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
+import { CricketDataService } from 'src/app/cricket-data.service';
+import { FullScoreCard } from 'src/app/scorecard';
 
 @Component({
   selector: 'app-full-score-card',
@@ -7,9 +10,22 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FullScoreCardComponent implements OnInit {
 
-  constructor() { }
+  public scorecard: FullScoreCard;
+
+  constructor(
+    public dialogRef: MatDialogRef<FullScoreCardComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: any,
+    private cricketDataService: CricketDataService,
+  ) { }
 
   ngOnInit() {
+    console.log(this.data);
+    const series: number = this.data.match.series.id;
+    const match: number = this.data.match.id;
+    this.cricketDataService.getScorecardForMatchSeries(match, series)
+      .then(response => {
+        this.scorecard = response.fullScorecard;
+        console.log(this.scorecard);
+      });
   }
-
 }
