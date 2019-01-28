@@ -1,27 +1,29 @@
 # CricketRealtimeScores
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.1.4.
+A website for viewing realtime Cricket scores from around the globe.
+You can view a running copy of the project here: https://cricket-realtime-scores.herokuapp.com/
 
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
-## Code scaffolding
-
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
-
 ## Build
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+Run `ng build --aot --prod` to build the project. 
+The build artifacts will be stored in the `dist/` directory.
 
-## Running unit tests
+## Deplyoing on Heroku
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+Simply deploy the project to Heroku. All the configuration is already configured to build the required production files and boot up an Express server to serve them.
 
-## Running end-to-end tests
+## Unit tests
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+This project is still in it's infancy. Little to no unit tests have been implemented yet.
 
-## Further help
+## Contributing
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+I am looking for contributers. If you are interested, please reach out. I welcome anyone of any experience level.
+
+## License
+
+Packaged under the MIT License.
