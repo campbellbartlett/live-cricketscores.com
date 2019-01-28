@@ -11,7 +11,7 @@ export class CricketDataService {
 
   constructor(private http: HttpClient) { }
 
-  private apiBaseUrl = 'http://api.cricket.com.au/';
+  private apiBaseUrl = 'https://api.cricket.com.au/';
 
   public getCurrentMatches(): Promise<Matches> {
     const url: string = `${this.apiBaseUrl}matches`;
