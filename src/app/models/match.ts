@@ -1,3 +1,5 @@
+import { Team } from './team';
+
 export class Match {
     "id": number;
     "matchTypeId": number;
@@ -19,16 +21,6 @@ export class Match {
     "startDateTime": string;
     "endDateTime": string;
     "isWomensMatch": string;
-}
-
-class Team {
-    "isBatting": boolean;
-    "id": number;
-    "name": string;
-    "shortName": string;
-    "logoUrl": string;
-    "backgroundImageUrl": string;
-    "teamColour": string;
 }
 
 export class Series {

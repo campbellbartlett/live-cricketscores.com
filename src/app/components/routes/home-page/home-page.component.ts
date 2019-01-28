@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { CricketDataService } from 'src/app/cricket-data.service';
-import { Match } from '../../match';
+import { CricketDataService } from 'src/app/services/cricket-data.service';
+import { Match } from '../../../models/index';
 
 @Component({
   selector: 'app-home-page',

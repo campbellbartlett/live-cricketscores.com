@@ -1,7 +1,7 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
-import { CricketDataService } from 'src/app/cricket-data.service';
-import { FullScoreCard } from 'src/app/scorecard';
+import { CricketDataService } from 'src/app/services/cricket-data.service';
+import { FullScoreCard } from 'src/app/models/scorecard';
 
 @Component({
   selector: 'app-full-score-card',
@@ -25,7 +25,6 @@ export class FullScoreCardComponent implements OnInit {
     this.cricketDataService.getScorecardForMatchSeries(match, series)
       .then(response => {
         this.scorecard = response.fullScorecard;
-        console.log(this.scorecard);
       });
   }
 }

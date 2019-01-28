@@ -1,10 +1,10 @@
 <mat-card class="score-card-small game-item box-shadow">
   <mat-card-header>
-    <div mat-card-avatar class="score-card-header-image"></div>
-    <mat-card-title class="text-color-primary">
-      {{match.homeTeam.shortName}}
+    <div mat-card-avatar class="score-card-header-image"><img  src="{{match.homeTeam.logoUrl}}"></div>
+    <mat-card-title>
+      <span [style.color]=match.homeTeam.teamColour>{{match.homeTeam.shortName}}</span>
       VS
-      {{match.awayTeam.shortName}}
+      <span [style.color]=match.awayTeam.teamColour>{{match.awayTeam.shortName}}</span>
     </mat-card-title>
     <mat-card-subtitle>{{match.venue.name}}</mat-card-subtitle>
   </mat-card-header>

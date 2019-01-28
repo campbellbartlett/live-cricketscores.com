@@ -12,10 +12,11 @@
   "private": true,
   "dependencies": {
     "@angular/animations": "^7.2.1",
-    "@angular/cdk": "^7.2.1",
+    "@angular/cdk": "^7.2.2",
     "@angular/common": "~7.1.0",
     "@angular/compiler": "~7.1.0",
     "@angular/core": "~7.1.0",
+    "@angular/flex-layout": "^7.0.0-beta.23",
     "@angular/forms": "~7.1.0",
     "@angular/material": "^7.2.1",
     "@angular/platform-browser": "~7.1.0",

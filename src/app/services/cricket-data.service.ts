@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Matches } from './matches'; 
-import { ScoreCard } from './scorecard';
+import { Matches } from '../models/matches'; 
+import { ScoreCard } from '../models/scorecard';
 
 @Injectable({
   providedIn: 'root'

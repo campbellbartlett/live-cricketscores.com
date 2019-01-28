@@ -1,0 +1,21 @@
+@import "../../../../assets/css/variables";
+@import "../../../../assets/css/mixins.scss";
+@import "../../../../assets/css/global.scss";
+
+.score-card-header-image {
+
+}
+
+.score-card-header-image img{
+    display:inline-block;
+    width: 100%;
+    height: auto;
+}
+
+.background-secondary {
+    background-color: $secondary;
+}
+
+.text-color-primary {
+    color: $primary;
+}

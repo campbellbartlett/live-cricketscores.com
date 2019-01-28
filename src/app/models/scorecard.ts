@@ -24,7 +24,7 @@ class Meta {
     "series": Series;
 }
 
-class Innings {
+export class Innings {
     "id": number;
     "isDeclared": boolean;
     "name": string;
