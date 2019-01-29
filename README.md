@@ -1,3 +1,5 @@
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/dd088750ebbc49f284a3afcc6b901223)](https://www.codacy.com/app/campbellb/cricket-realtime-scores?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=campbellbartlett/cricket-realtime-scores&amp;utm_campaign=Badge_Grade)
+
 # CricketRealtimeScores
 
 A website for viewing realtime Cricket scores from around the globe.
