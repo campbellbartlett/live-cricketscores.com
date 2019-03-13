@@ -3,7 +3,7 @@
 # CricketRealtimeScores
 
 A website for viewing realtime Cricket scores from around the globe.
-You can view a running copy of the project here: https://cricket-realtime-scores.herokuapp.com/
+You can view a running copy of the project here: https://tender-galileo-bceeff.netlify.com/
 
 ## Development server
 
