@@ -18,26 +18,26 @@
       <td class="font-weight-bold"  mat-footer-cell *matFooterCellDef>{{inning.run}}</td>
     </ng-container>
     <ng-container matColumnDef="balls">
-      <th mat-header-cell *matHeaderCellDef class="d-none d-md-table-cell">Balls</th>
-      <td mat-cell *matCellDef="let batsmen" class="d-none d-md-table-cell">{{batsmen.balls}}</td>
-      <td class="font-weight-bold text-right pr-2" mat-footer-cell *matFooterCellDef>Runs per over: </td>
+      <th mat-header-cell *matHeaderCellDef class="d-md-table-cell">Balls</th>
+      <td mat-cell *matCellDef="let batsmen" class="d-md-table-cell">{{batsmen.balls}}</td>
+      <td class="font-weight-bold text-right pr-2" mat-footer-cell *matFooterCellDef>RPO: </td>
       <td mat-footer-cell *matFooterCellDef></td>
     </ng-container>
     <ng-container matColumnDef="4s">
-      <th mat-header-cell *matHeaderCellDef class="d-none d-md-table-cell">4s</th>
-      <td mat-cell *matCellDef="let batsmen" class="d-none d-md-table-cell">{{batsmen.fours}}</td>
+      <th mat-header-cell *matHeaderCellDef class="d-md-table-cell">4s</th>
+      <td mat-cell *matCellDef="let batsmen" class="d-md-table-cell">{{batsmen.fours}}</td>
       <td class="font-weight-bold"  mat-footer-cell *matFooterCellDef>{{inning.runRate}}</td>
       <td mat-footer-cell *matFooterCellDef></td>
     </ng-container>
     <ng-container matColumnDef="6s">
-      <th mat-header-cell *matHeaderCellDef class="d-none d-md-table-cell">6s</th>
-      <td mat-cell *matCellDef="let batsmen" class="d-none d-md-table-cell">{{batsmen.sixes}}</td>
+      <th mat-header-cell *matHeaderCellDef class="d-md-table-cell">6s</th>
+      <td mat-cell *matCellDef="let batsmen" class="d-md-table-cell">{{batsmen.sixes}}</td>
       <td class="font-weight-bold text-right pr-2" mat-footer-cell *matFooterCellDef>Over: </td>
       <td mat-footer-cell *matFooterCellDef></td>
     </ng-container>
     <ng-container matColumnDef="strikeRate">
-      <th mat-header-cell *matHeaderCellDef class="d-none d-md-table-cell">S/R</th>
-      <td mat-cell *matCellDef="let batsmen" class="d-none d-md-table-cell">{{batsmen.strikeRate}}</td>
+      <th mat-header-cell *matHeaderCellDef class="d-md-table-cell">S/R</th>
+      <td mat-cell *matCellDef="let batsmen" class="d-md-table-cell">{{batsmen.strikeRate}}</td>
       <td class="font-weight-bold"  mat-footer-cell *matFooterCellDef>{{inning.over}}</td>
       <td mat-footer-cell *matFooterCellDef></td>
     </ng-container>

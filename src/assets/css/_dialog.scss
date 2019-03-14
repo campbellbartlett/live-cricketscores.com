@@ -1,0 +1,17 @@
+@media(max-width:992px) {
+    .score-card-dialog {
+        width: 100% !important;
+        height: 100% !important;
+        max-width: 100% !important;
+    }
+
+    .mat-dialog-content {
+        max-height: unset !important;
+    }
+
+    .mat-cell, 
+    .mat-header-cell, 
+    .mat-footer-cell {
+        font-size: 0.5em;
+    }
+}
