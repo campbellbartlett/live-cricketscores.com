@@ -12,6 +12,10 @@
       <th mat-header-cell *matHeaderCellDef class="d-none d-md-table-cell">Overs</th>
       <td mat-cell *matCellDef="let bowler" class="d-none d-md-table-cell">{{bowler.overs}}</td>
     </ng-container>
+    <ng-container matColumnDef="wickets">
+      <th mat-header-cell *matHeaderCellDef>Wickets</th>
+      <td mat-cell *matCellDef="let bowler">{{bowler.wickets}}</td>
+    </ng-container>
     <ng-container matColumnDef="runs">
       <th mat-header-cell *matHeaderCellDef>Runs</th>
       <td mat-cell *matCellDef="let bowler">{{bowler.runsConceded}}</td>
