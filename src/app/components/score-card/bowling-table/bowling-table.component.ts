@@ -10,7 +10,7 @@ export class BowlingTableComponent implements OnInit {
 
   @Input("inning") 
   public inning: Innings;
-  public displayedColumns: string[] = ['name', 'overs', 'runs', 'noBalls', 'wides', 'maidens', 'econRate'];
+  public displayedColumns: string[] = ['name', 'overs', 'runs', 'noBalls', 'wides', 'maidens', 'econRate', 'wickets'];
 
   constructor() { }
 
