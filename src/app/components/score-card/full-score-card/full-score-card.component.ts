@@ -19,11 +19,11 @@ export class FullScoreCardComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    console.log(this.data);
     const series: number = this.data.match.series.id;
     const match: number = this.data.match.id;
     this.cricketDataService.getScorecardForMatchSeries(match, series)
       .then(response => {
+        response.fullScorecard.innings.reverse();
         this.scorecard = response.fullScorecard;
       });
   }

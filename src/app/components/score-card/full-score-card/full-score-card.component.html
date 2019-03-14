@@ -8,7 +8,7 @@
 <div mat-dialog-content>
   <div *ngIf="scorecard">
     <mat-tab-group mat-align-tabs="center" [selectedIndex]="scorecard.innings.length - 1">
-      <div *ngFor="let inning of scorecard.innings.reverse()">
+      <div *ngFor="let inning of scorecard.innings">
         <mat-tab label="{{inning.name}}">
           <h3 class="text-center mt-5 mb-0">Batting</h3>
           <app-batting-table [inning]=inning></app-batting-table>
