@@ -1,3 +1,8 @@
 @import "../../../../assets/css/variables";
 @import "../../../../assets/css/mixins.scss";
 @import "../../../../assets/css/global.scss";
+
+
+.background-secondary {
+    background-color: $secondary;
+}

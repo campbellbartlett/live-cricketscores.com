@@ -20,6 +20,7 @@ export class MiniScoreCardComponent implements OnInit {
 
   showDialog() {
     this.dialog.open(FullScoreCardComponent, {
+      panelClass: 'score-card-dialog',
       width: '80%',
       height: '80%',
       data: { match: this.match }

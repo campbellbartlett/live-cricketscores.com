@@ -27,4 +27,8 @@ export class FullScoreCardComponent implements OnInit {
         this.scorecard = response.fullScorecard;
       });
   }
+
+  closeDialog() {
+    this.dialogRef.close();
+  }
 }
