@@ -1,9 +1,11 @@
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/dd088750ebbc49f284a3afcc6b901223)](https://www.codacy.com/app/campbellb/cricket-realtime-scores?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=campbellbartlett/cricket-realtime-scores&amp;utm_campaign=Badge_Grade)
 
+[![Netlify Status](https://api.netlify.com/api/v1/badges/2034dcc4-05e9-4129-972a-1215cb3b485b/deploy-status)](https://app.netlify.com/sites/tender-galileo-bceeff/deploys)
+
 # CricketRealtimeScores
 
 A website for viewing realtime Cricket scores from around the globe.
-You can view a running copy of the project here: https://tender-galileo-bceeff.netlify.com/
+You can view a running copy of the project [here](https://tender-galileo-bceeff.netlify.com/)
 
 ## Development server
 
