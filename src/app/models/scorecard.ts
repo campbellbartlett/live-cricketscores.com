@@ -13,7 +13,7 @@ export class FullScoreCard {
         "mostWicketsAward": MostWicketsAward,
         "manOfTheMatchId": number;
         "manOfMatchBattingResults": [any],
-        "manOfMatchBowlngResults": [any],
+        "manOfMatchBowlingResults": [any],
         "mostRunsAwardPlayerResults": [Batsmen],
         "mostWicketsAwardPlayerResults": [Bowler]
     }

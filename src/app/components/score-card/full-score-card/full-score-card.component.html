@@ -9,11 +9,14 @@
   <div *ngIf="scorecard">
     <mat-tab-group mat-align-tabs="center" [selectedIndex]="scorecard.innings.length - 1">
       <div *ngFor="let inning of scorecard.innings">
-        <mat-tab label="{{inning.name}}">
-          <h3 class="text-center mt-5 mb-0">Batting</h3>
-          <app-batting-table [inning]=inning></app-batting-table>
-          <div>
-            <h3 class="text-center mt-5">Bowling</h3>
+        <mat-tab label="{{inning.name}}({{inning | runsWicketsDeclared}})">
+          <h5 class="text-center mt-5 mb-0 text-colour-primary">{{data.match.matchSummaryText}}</h5>
+          <div class="box-shadow m-3">
+            <h3 class="text-center mt-5 mb-0 text-colour-secondary">Batting</h3>
+            <app-batting-table [inning]=inning></app-batting-table>
+          </div>
+          <div class="box-shadow m-3">
+            <h3 class="text-center mt-5 text-colour-secondary">Bowling</h3>
             <app-bowling-table [inning]=inning></app-bowling-table>
           </div>
         </mat-tab>

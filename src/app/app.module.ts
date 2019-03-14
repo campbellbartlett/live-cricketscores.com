@@ -29,6 +29,8 @@ import {
   MatTableModule
 } from '@angular/material';
 
+import { RunsWicketsDeclaredPipe } from './components/score-card/pipe/runs-wickets-declared/runs-wickets-declared.pipe';
+
 @NgModule({
   declarations: [
     AppLayoutComponent,
@@ -39,7 +41,8 @@ import {
     SocialIconComponent,
     MiniScoreCardComponent,
     BattingTableComponent,
-    BowlingTableComponent
+    BowlingTableComponent,
+    RunsWicketsDeclaredPipe
   ],
   imports: [
     FlexLayoutModule,

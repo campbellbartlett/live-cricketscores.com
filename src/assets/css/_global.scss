@@ -130,3 +130,11 @@ section {
 .scroll {
   overflow-y: auto;
 }
+
+.text-colour-primary {
+  color: $primary;
+}
+
+.text-colour-secondary {
+  color: $secondary;
+}

@@ -3,10 +3,10 @@
     <ng-container matColumnDef="name" sticky>
       <th mat-header-cell *matHeaderCellDef>Name</th>
       <td mat-cell *matCellDef="let batsmen">
-        <div class="font-weight-bold">
+          <div class="text-colour-primary">
           {{batsmen.name}}
         </div>
-        <div>
+        <div class="text-colour-secondary">
           {{batsmen.howOut}}
         </div>
       </td>
