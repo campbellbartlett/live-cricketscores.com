@@ -143,3 +143,6 @@ table {
   border-collapse: unset;
 }
 
+.mat-progress-spinner circle, .mat-spinner circle {
+  stroke: $secondary;
+  }

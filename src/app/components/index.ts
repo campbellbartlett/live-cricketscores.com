@@ -19,6 +19,10 @@ import {
     SocialIconComponent
 } from './social-icon/social-icon.component'
 
+import {
+    SpinnerComponent
+} from './spinner/spinner.component'
+
 export {
     AppLayoutComponent,
     NavBarComponent,
@@ -28,5 +32,6 @@ export {
     BowlingTableComponent,
     FullScoreCardComponent,
     MiniScoreCardComponent,
-    SocialIconComponent
+    SocialIconComponent,
+    SpinnerComponent
 }
