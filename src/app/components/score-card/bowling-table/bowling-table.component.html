@@ -33,11 +33,11 @@
       <td mat-cell *matCellDef="let bowler" class="d-md-table-cell">{{bowler.wides}}</td>
     </ng-container>
     <ng-container matColumnDef="maidens">
-      <th mat-header-cell *matHeaderCellDef class="d-md-table-cell">Maidens</th>
+      <th mat-header-cell *matHeaderCellDef class="d-md-table-cell pr-1">Maidens</th>
       <td mat-cell *matCellDef="let bowler" class="d-md-table-cell">{{bowler.maidens}}</td>
     </ng-container>
     <ng-container matColumnDef="econRate">
-      <th mat-header-cell *matHeaderCellDef>S/R</th>
+      <th mat-header-cell *matHeaderCellDef>RPO</th>
       <td mat-cell *matCellDef="let bowler">{{bowler.economy}}</td>
     </ng-container>
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
