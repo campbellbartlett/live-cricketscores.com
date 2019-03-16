@@ -7,10 +7,14 @@
     background-color: $secondary;
 }
 
-.left-50 {
-    left: 50%;
+@media(min-width:992px) {
+    .left-50 {
+        left: 50%;
+    }
 }
 
-.translate-40-10 {
-    transform: translate(-40%, -100%);
+@media(min-width:992px) {
+    .translate-40-10 {
+        transform: translate(-40%, -100%);
+    }
 }
