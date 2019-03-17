@@ -45,20 +45,22 @@ export class FullScoreCardComponent implements OnInit {
       .then(response => {
         response.fullScorecard.innings.reverse();
         const updatedScoreCard = response.fullScorecard;
-        if (this.scorecard && this.match.status === Match.LIVE) {
-          if (this.scorecard.innings.length != updatedScoreCard.innings.length) {
-            this.scorecard = updatedScoreCard;
-          } else {
-            const updatedInnings = updatedScoreCard.innings[updatedScoreCard.innings.length - 1];
-            const currentInnings = this.scorecard.innings[this.scorecard.innings.length - 1];
-            currentInnings.batsmen = updatedInnings.batsmen;
-            currentInnings.bowlers = updatedInnings.bowlers;
-            currentInnings.over = updatedInnings.over;
-            currentInnings.run = updatedInnings.run;
-            currentInnings.wicket = updatedInnings.wicket;
-          }
-        } else {
+
+        if (!this.scorecard) {
           this.scorecard = updatedScoreCard;
+          return;
+        }
+
+        if (this.scorecard.innings.length != updatedScoreCard.innings.length) {
+          this.scorecard = updatedScoreCard;
+        } else {
+          const updatedInnings = updatedScoreCard.innings[updatedScoreCard.innings.length - 1];
+          const currentInnings = this.scorecard.innings[this.scorecard.innings.length - 1];
+          currentInnings.batsmen = updatedInnings.batsmen;
+          currentInnings.bowlers = updatedInnings.bowlers;
+          currentInnings.over = updatedInnings.over;
+          currentInnings.run = updatedInnings.run;
+          currentInnings.wicket = updatedInnings.wicket;
         }
       });
   }
