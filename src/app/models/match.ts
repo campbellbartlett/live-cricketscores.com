@@ -1,5 +1,4 @@
 import { Team } from './team';
-
 export class Match {
     "id": number;
     "matchTypeId": number;
@@ -21,6 +20,8 @@ export class Match {
     "startDateTime": string;
     "endDateTime": string;
     "isWomensMatch": string;
+
+    public static LIVE = 'LIVE';
 }
 
 export class Series {

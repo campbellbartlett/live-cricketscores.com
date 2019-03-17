@@ -26,7 +26,8 @@ import {
   MatCardModule,
   MatDialogModule,
   MatTabsModule,
-  MatTableModule
+  MatTableModule,
+  MatProgressSpinnerModule
 } from '@angular/material';
 
 import { RunsWicketsDeclaredPipe } from './components/score-card/pipe/runs-wickets-declared/runs-wickets-declared.pipe';
@@ -56,6 +57,7 @@ import { RunsWicketsDeclaredPipe } from './components/score-card/pipe/runs-wicke
     MatDialogModule,
     MatTabsModule,
     MatTableModule,
+    MatProgressSpinnerModule,
     AppRoutingModule,
     HttpClientModule
   ],

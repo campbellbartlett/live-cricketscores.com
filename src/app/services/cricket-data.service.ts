@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Matches } from '../models/matches'; 
+import { HttpClient } from '@angular/common/http';
+import { Matches } from '../models/matches';
 import { ScoreCard } from '../models/scorecard';
 
 @Injectable({
@@ -25,10 +25,10 @@ export class CricketDataService {
   public getScorecardForMatchSeries(match: number, series: number): Promise<ScoreCard> {
     const url: string = `${this.apiBaseUrl}scorecards/full/${series}/${match}?IncludeVideoReplays=false`;
     return this.http
-    .get(url)
-    .toPromise()
-    .then(response => response as ScoreCard)
-    .catch(this.handleError);
+      .get(url)
+      .toPromise()
+      .then(response => response as ScoreCard)
+      .catch(this.handleError);
   }
 
   private handleError(error: any): Promise<any> {

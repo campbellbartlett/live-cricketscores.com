@@ -2,6 +2,7 @@ import { Component, OnInit, Inject } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { CricketDataService } from 'src/app/services/cricket-data.service';
 import { FullScoreCard } from 'src/app/models/scorecard';
+import { Match } from 'src/app/models/match';
 
 @Component({
   selector: 'app-full-score-card',
@@ -11,6 +12,11 @@ import { FullScoreCard } from 'src/app/models/scorecard';
 export class FullScoreCardComponent implements OnInit {
 
   public scorecard: FullScoreCard;
+  public match: Match;
+
+  private timer: NodeJS.Timer;
+  private matchId: number;
+  private seriesId: number;
 
   constructor(
     public dialogRef: MatDialogRef<FullScoreCardComponent>,
@@ -19,16 +25,41 @@ export class FullScoreCardComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    const series: number = this.data.match.series.id;
-    const match: number = this.data.match.id;
-    this.cricketDataService.getScorecardForMatchSeries(match, series)
-      .then(response => {
-        response.fullScorecard.innings.reverse();
-        this.scorecard = response.fullScorecard;
-      });
+    this.seriesId = this.data.match.series.id;
+    this.matchId = this.data.match.id;
+    this.match = this.data.match;
+    this.updateScore()
+    this.timer = setInterval(() => this.updateScore(), 10000);
+  }
+
+  ngOnDestroy() {
+    clearInterval(this.timer);
   }
 
   closeDialog() {
     this.dialogRef.close();
+  }
+
+  updateScore() {
+    this.cricketDataService.getScorecardForMatchSeries(this.matchId, this.seriesId)
+      .then(response => {
+        response.fullScorecard.innings.reverse();
+        const updatedScoreCard = response.fullScorecard;
+        if (this.scorecard && this.match.status === Match.LIVE) {
+          if (this.scorecard.innings.length != updatedScoreCard.innings.length) {
+            this.scorecard = updatedScoreCard;
+          } else {
+            const updatedInnings = updatedScoreCard.innings[updatedScoreCard.innings.length - 1];
+            const currentInnings = this.scorecard.innings[this.scorecard.innings.length - 1];
+            currentInnings.batsmen = updatedInnings.batsmen;
+            currentInnings.bowlers = updatedInnings.bowlers;
+            currentInnings.over = updatedInnings.over;
+            currentInnings.run = updatedInnings.run;
+            currentInnings.wicket = updatedInnings.wicket;
+          }
+        } else {
+          this.scorecard = updatedScoreCard;
+        }
+      });
   }
 }

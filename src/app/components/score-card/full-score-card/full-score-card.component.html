@@ -1,4 +1,4 @@
-<div mat-dialog-title class="card-header text-secondary text-uppercase text-center">
+<div mat-dialog-title class="card-header text-secondary text-uppercase text-center d-flex">
   <h2>
     <span [style.color]=data.match.homeTeam.teamColour>{{data.match.homeTeam.shortName}}</span>
     VS
@@ -22,6 +22,10 @@
         </mat-tab>
       </div>
     </mat-tab-group>
-    <button mat-button class="background-secondary left-50 translate-50-10" (click)="closeDialog()">Close</button>
+    <div class="d-flex justify-content-end">
+      <p class="mr-3 text-colour-secondary">Live reloading enabled..</p>
+      <mat-spinner [diameter]="32" [color]="warn"></mat-spinner>
+    </div>
+    <button mat-button class="background-secondary left-50 translate-40-10" (click)="closeDialog()">Close</button>
   </div>
 </div>
