@@ -28,6 +28,5 @@ export {
     BowlingTableComponent,
     FullScoreCardComponent,
     MiniScoreCardComponent,
-    SocialIconComponent,
-    SpinnerComponent
+    SocialIconComponent
 }
