@@ -1,9 +1,14 @@
+import { MatchSubject } from './../../../models/matchSubject';
 import { Component, OnInit, Inject } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { CricketDataService } from 'src/app/services/cricket-data.service';
 import { FullScoreCard } from 'src/app/models/scorecard';
 import { Match } from 'src/app/models/match';
 import { isEmpty } from 'src/app/utils/ObjectUtils';
+import { Subject } from 'rxjs';
+
+var moment = require('moment');
+
 
 @Component({
   selector: 'app-full-score-card',
@@ -13,11 +18,14 @@ import { isEmpty } from 'src/app/utils/ObjectUtils';
 export class FullScoreCardComponent implements OnInit {
 
   public scorecard: FullScoreCard;
+    
   public match: Match;
 
   private timer: NodeJS.Timer;
   private matchId: number;
   private seriesId: number;
+
+  private live: boolean = false;
 
   constructor(
     public dialogRef: MatDialogRef<FullScoreCardComponent>,
@@ -26,12 +34,8 @@ export class FullScoreCardComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.seriesId = this.data.match.series.id;
-    this.matchId = this.data.match.id;
-    this.match = this.data.match;
-    this.updateScore()
-    this.timer = setInterval(() => this.updateScore(), 10000);
-    console.log(this.data.match);
+    this.setUpMatch(this.data.matchSubject.match);
+    this.data.matchSubject.subject.subscribe(match => this.match = match);
   }
 
   ngOnDestroy() {
@@ -42,11 +46,20 @@ export class FullScoreCardComponent implements OnInit {
     this.dialogRef.close();
   }
 
-  updateScore() {
+  private setUpMatch(match: Match) {
+    this.seriesId = match.series.id;
+    this.matchId = match.id;
+    this.match = match;
+    this.getScore();
+    this.timer = setInterval(() => this.updateScore(), 10000);
+  }
+
+  private getScore() {
+    this.live = this.isMatchLive();
     this.cricketDataService.getScorecardForMatchSeries(this.matchId, this.seriesId)
       .then(response => {
         if (isEmpty(response)) {
-          // Match has not started yet
+          this.live = false;
           return;
         }
         response.fullScorecard.innings.reverse();
@@ -69,5 +82,15 @@ export class FullScoreCardComponent implements OnInit {
           currentInnings.wicket = updatedInnings.wicket;
         }
       });
+  }
+
+  private updateScore() {
+    if (!this.isMatchLive()) {
+      return;
+    }
+  }
+
+  private isMatchLive(): boolean {
+    return !(moment(this.match.startDateTime) > moment() || this.match.status != 'LIVE');
   }
 }
