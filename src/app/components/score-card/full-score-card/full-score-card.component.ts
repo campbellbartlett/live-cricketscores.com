@@ -3,6 +3,7 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { CricketDataService } from 'src/app/services/cricket-data.service';
 import { FullScoreCard } from 'src/app/models/scorecard';
 import { Match } from 'src/app/models/match';
+import { isEmpty } from 'src/app/utils/ObjectUtils';
 
 @Component({
   selector: 'app-full-score-card',
@@ -30,6 +31,7 @@ export class FullScoreCardComponent implements OnInit {
     this.match = this.data.match;
     this.updateScore()
     this.timer = setInterval(() => this.updateScore(), 10000);
+    console.log(this.data.match);
   }
 
   ngOnDestroy() {
@@ -43,6 +45,10 @@ export class FullScoreCardComponent implements OnInit {
   updateScore() {
     this.cricketDataService.getScorecardForMatchSeries(this.matchId, this.seriesId)
       .then(response => {
+        if (isEmpty(response)) {
+          // Match has not started yet
+          return;
+        }
         response.fullScorecard.innings.reverse();
         const updatedScoreCard = response.fullScorecard;
 

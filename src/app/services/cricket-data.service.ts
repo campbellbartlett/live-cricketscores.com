@@ -2,6 +2,8 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Matches } from '../models/matches';
 import { ScoreCard } from '../models/scorecard';
+var moment = require('moment');
+
 
 @Injectable({
   providedIn: 'root'
@@ -18,7 +20,15 @@ export class CricketDataService {
     return this.http
       .get(url)
       .toPromise()
-      .then(response => response as Matches)
+      .then(response => {
+        const matches = response as Matches;
+        matches.matchList.matches.forEach(match => {
+          if (match.matchSummaryText === "") {
+            match.matchSummaryText = `Play will begin at ${moment(match.startDateTime).format("hh:mmA DD/MM/YY")}`;
+          }
+        })
+        return matches;
+      })
       .catch(this.handleError);
   }
 
