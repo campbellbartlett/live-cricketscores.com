@@ -14,7 +14,10 @@
 }
 
 @media(min-width:992px) {
-    .translate-40-10 {
+    .translate-40-100 {
         transform: translate(-40%, -100%);
+    }
+    .translate-40-0 {
+        transform: translate(-40%, 0%);
     }
 }
