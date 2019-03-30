@@ -15,7 +15,7 @@ export class MiniScoreCardComponent implements OnInit {
   @Input()
   public matchSubject: MatchSubject;
 
-  private match: Match;
+  public match: Match;
 
   constructor(public dialog: MatDialog) { }
 
