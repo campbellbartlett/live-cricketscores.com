@@ -22,6 +22,7 @@ export class MiniScoreCardComponent implements OnInit {
   ngOnInit() {
     this.match = this.matchSubject.match;
     this.matchSubject.subject.subscribe(match => this.match = match);
+    console.log(this.match);
   }
 
   showDialog() {
