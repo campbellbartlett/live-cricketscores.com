@@ -13,6 +13,10 @@ export class HomePageComponent implements OnInit {
 
   public matches: Array<MatchSubject>;
 
+  private showCompleted = false;
+  public showUpComing = false;
+  private showCurrent = true;
+
   private timer: NodeJS.Timer;
 
   constructor(

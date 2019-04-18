@@ -1,5 +1,26 @@
-<div class="row pt-4 p-4">
-    <div *ngFor="let match of matches" class="m-2">
-        <app-mini-score-card [matchSubject]="match"></app-mini-score-card>
+<div>
+    <div>
+        <mat-slide-toggle class="m-1" [checked]="showCompleted" (change)="showCompleted = !showCompleted">
+            <div class="text-colour-secondary">Completed matches</div>
+        </mat-slide-toggle>
+        <mat-slide-toggle class="m-1" [checked]="showCurrent" (change)="showCurrent = !showCurrent">
+            <div class="text-colour-secondary">Live matches</div>
+        </mat-slide-toggle>
+        <mat-slide-toggle class="m-1" [checked]="showUpComing" (change)="showUpComing = !showUpComing">
+            <div class="text-colour-secondary">Upcoming matches</div>
+        </mat-slide-toggle>
+    </div>
+    <div class="row pt-4 p-4">
+        <div *ngFor="let match of matches">
+            <div class="m-2" *ngIf="match.match.status === 'UPCOMING' && showUpComing">
+                <app-mini-score-card [matchSubject]="match"></app-mini-score-card>
+            </div>
+            <div class="m-2" *ngIf="match.match.status === 'LIVE' && showCurrent">
+                <app-mini-score-card [matchSubject]="match"></app-mini-score-card>
+            </div>
+            <div class="m-2" *ngIf="match.match.status === 'COMPLETED' && showCompleted">
+                <app-mini-score-card [matchSubject]="match"></app-mini-score-card>
+            </div>
+        </div>
     </div>
 </div>
