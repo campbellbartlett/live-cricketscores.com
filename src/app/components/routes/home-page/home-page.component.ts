@@ -13,9 +13,9 @@ export class HomePageComponent implements OnInit {
 
   public matches: Array<MatchSubject>;
 
-  private showCompleted = false;
+  public showCompleted = false;
   public showUpComing = false;
-  private showCurrent = true;
+  public showCurrent = true;
 
   private timer: NodeJS.Timer;
 
