@@ -25,7 +25,7 @@ export class FullScoreCardComponent implements OnInit {
   private matchId: number;
   private seriesId: number;
 
-  private live: boolean = false;
+  public live: boolean = false;
 
   constructor(
     public dialogRef: MatDialogRef<FullScoreCardComponent>,
