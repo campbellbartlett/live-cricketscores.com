@@ -12,7 +12,9 @@ import {
     BattingTableComponent,
     BowlingTableComponent,
     FullScoreCardComponent,
-    MiniScoreCardComponent
+    MiniScoreCardComponent,
+    CommentaryContainerComponent,
+    CommentaryCardComponent
 } from './score-card/index'
 
 import {
@@ -28,5 +30,7 @@ export {
     BowlingTableComponent,
     FullScoreCardComponent,
     MiniScoreCardComponent,
+    CommentaryCardComponent,
+    CommentaryContainerComponent,
     SocialIconComponent
 }
