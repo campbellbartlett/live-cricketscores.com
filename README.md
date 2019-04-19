@@ -2,9 +2,9 @@
 
 [![Netlify Status](https://api.netlify.com/api/v1/badges/2034dcc4-05e9-4129-972a-1215cb3b485b/deploy-status)](https://app.netlify.com/sites/tender-galileo-bceeff/deploys)
 
-# CricketRealtimeScores
+# Live-CricketScores.com
 
-A website for viewing realtime Cricket scores from around the globe.
+A website for viewing Live Cricket scores from around the globe.
 You can view a running copy of the project [here](https://tender-galileo-bceeff.netlify.com/)
 
 ## Development server
