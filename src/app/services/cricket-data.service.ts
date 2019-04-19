@@ -16,7 +16,7 @@ export class CricketDataService {
   private apiBaseUrl = 'https://api.cricket.com.au/';
 
   public getCurrentMatches(): Promise<Matches> {
-    const url: string = `${this.apiBaseUrl}matches`;
+    const url: string = `${this.apiBaseUrl}matches?completedLimit=5&upcomingLimit=5`;
     return this.http
       .get(url)
       .toPromise()

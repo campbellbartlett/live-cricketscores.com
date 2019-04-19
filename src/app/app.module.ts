@@ -6,7 +6,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppRoutingModule } from './app-routing.module';
 
-import { 
+import {
   AppLayoutComponent,
   NavBarComponent,
   AboutPageComponent,
@@ -27,8 +27,10 @@ import {
   MatDialogModule,
   MatTabsModule,
   MatTableModule,
-  MatProgressSpinnerModule
+  MatProgressSpinnerModule,
+  MatSlideToggleModule
 } from '@angular/material';
+
 
 import { RunsWicketsDeclaredPipe } from './components/score-card/pipe/runs-wickets-declared/runs-wickets-declared.pipe';
 
@@ -58,9 +60,10 @@ import { RunsWicketsDeclaredPipe } from './components/score-card/pipe/runs-wicke
     MatTabsModule,
     MatTableModule,
     MatProgressSpinnerModule,
+    MatSlideToggleModule,
     AppRoutingModule,
     HttpClientModule
-  ],
+    ],
   entryComponents: [FullScoreCardComponent],
   bootstrap: [AppLayoutComponent],
   providers: [],

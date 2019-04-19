@@ -19,3 +19,16 @@
 .text-color-primary {
     color: $primary;
 }
+
+.fixed-width {
+    min-width: 90vw;
+    max-width: 90vw;
+}
+
+@media(min-width:992px) {
+    .fixed-width {
+        min-width: 30vw;
+        max-width: 30vw;
+    }
+}
+
