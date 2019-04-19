@@ -15,7 +15,9 @@ import {
   BowlingTableComponent,
   FullScoreCardComponent,
   MiniScoreCardComponent,
-  SocialIconComponent
+  SocialIconComponent,
+  CommentaryCardComponent,
+  CommentaryContainerComponent
 } from './components/index'
 
 import {
@@ -33,6 +35,8 @@ import {
 
 
 import { RunsWicketsDeclaredPipe } from './components/score-card/pipe/runs-wickets-declared/runs-wickets-declared.pipe';
+import { CommentaryHeaderPipe } from './components/score-card/pipe/commentary-header.pipe';
+import { CommentaryTextPipe } from './components/score-card/pipe/commentary-text.pipe';
 
 @NgModule({
   declarations: [
@@ -45,7 +49,11 @@ import { RunsWicketsDeclaredPipe } from './components/score-card/pipe/runs-wicke
     MiniScoreCardComponent,
     BattingTableComponent,
     BowlingTableComponent,
-    RunsWicketsDeclaredPipe
+    RunsWicketsDeclaredPipe,
+    CommentaryHeaderPipe,
+    CommentaryTextPipe,
+    CommentaryContainerComponent,
+    CommentaryCardComponent
   ],
   imports: [
     FlexLayoutModule,

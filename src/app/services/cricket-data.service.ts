@@ -2,6 +2,8 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Matches } from '../models/matches';
 import { ScoreCard } from '../models/scorecard';
+import { Commentary } from '../models/commentary';
+import { Subject, Observable } from 'rxjs';
 var moment = require('moment');
 
 
@@ -34,6 +36,15 @@ export class CricketDataService {
 
   public getScorecardForMatchSeries(match: number, series: number): Promise<ScoreCard> {
     const url: string = `${this.apiBaseUrl}scorecards/full/${series}/${match}?IncludeVideoReplays=false`;
+    return this.http
+      .get(url)
+      .toPromise()
+      .then(response => response as ScoreCard)
+      .catch(this.handleError);
+  }
+
+  public getCommentaryForMatchSeries(match: number, series: number): Promise<Commentary> {
+    const url: string = `${this.apiBaseUrl}/comments/${series}/${match}?IncludeVideoReplays=false`;
     return this.http
       .get(url)
       .toPromise()

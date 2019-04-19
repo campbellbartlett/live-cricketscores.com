@@ -1,3 +1,4 @@
+import { Commentary } from './../../../models/commentary';
 import { MatchSubject } from './../../../models/matchSubject';
 import { Component, OnInit, Inject } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
@@ -5,10 +6,8 @@ import { CricketDataService } from 'src/app/services/cricket-data.service';
 import { FullScoreCard } from 'src/app/models/scorecard';
 import { Match } from 'src/app/models/match';
 import { isEmpty } from 'src/app/utils/ObjectUtils';
-import { Subject } from 'rxjs';
 
 var moment = require('moment');
-
 
 @Component({
   selector: 'app-full-score-card',
@@ -20,6 +19,7 @@ export class FullScoreCardComponent implements OnInit {
   public scorecard: FullScoreCard;
     
   public match: Match;
+  public matchCommentary: Commentary;
 
   private timer: NodeJS.Timer;
   private matchId: number;
@@ -51,7 +51,21 @@ export class FullScoreCardComponent implements OnInit {
     this.matchId = match.id;
     this.match = match;
     this.getScore();
-    this.timer = setInterval(() => this.updateScore(), 10000);
+    this.getCommentary();
+    this.timer = setInterval(() => this.refresh(), 10000);    
+  }
+
+  private refresh() {
+    if (!this.isMatchLive()) {
+      return;
+    }
+    this.getScore();
+    this.getCommentary();
+  }
+
+  private getCommentary() {
+    this.cricketDataService.getCommentaryForMatchSeries(this.matchId, this.seriesId)
+      .then(commentary => this.matchCommentary = commentary);
   }
 
   private getScore() {
@@ -82,12 +96,6 @@ export class FullScoreCardComponent implements OnInit {
           currentInnings.wicket = updatedInnings.wicket;
         }
       });
-  }
-
-  private updateScore() {
-    if (!this.isMatchLive()) {
-      return;
-    }
   }
 
   private isMatchLive(): boolean {
