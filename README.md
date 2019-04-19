@@ -5,7 +5,7 @@
 # Live-CricketScores.com
 
 A website for viewing Live Cricket scores from around the globe.
-You can view a running copy of the project [here](https://tender-galileo-bceeff.netlify.com/)
+You can view a running copy of the project [here](https://live-cricketscores.com/)
 
 ## Development server
 
