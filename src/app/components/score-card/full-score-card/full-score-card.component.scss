@@ -2,32 +2,36 @@
 @import "../../../../assets/css/mixins.scss";
 @import "../../../../assets/css/global.scss";
 
-
 .background-secondary {
-    background-color: $secondary;
+  background-color: $secondary;
 }
 
-@media(min-width:992px) {
-    .left-50 {
-        left: 50%;
-    }
+.momentum-scroll {
+  overflow-y: scroll; /* has to be scroll, not auto */
+  -webkit-overflow-scrolling: touch;
 }
 
-@media(min-width:992px) {
-    .translate-40-100 {
-        transform: translate(-40%, -100%);
-    }
-    .translate-40-0 {
-        transform: translate(-40%, 0%);
-    }
+@media (min-width: 992px) {
+  .left-50 {
+    left: 50%;
+  }
 }
 
-.card-header-image img{
-    display:inline-block;
-    width: 100%;
-    height: auto;
+@media (min-width: 992px) {
+  .translate-40-100 {
+    transform: translate(-40%, -100%);
+  }
+  .translate-40-0 {
+    transform: translate(-40%, 0%);
+  }
+}
+
+.card-header-image img {
+  display: inline-block;
+  width: 100%;
+  height: auto;
 }
 
 .width-3em {
-    width: 3em;
+  width: 3em;
 }
