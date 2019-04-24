@@ -1,12 +1,23 @@
 <mat-card class="score-card-small game-item box-shadow fixed-width">
   <mat-card-header>
-    <div mat-card-avatar class="score-card-header-image"><img  src="{{match.homeTeam.logoUrl}}" alt="{{match.homeTeam.shortName}}"></div>
+    <div class="d-block">
+      <div mat-card-avatar class="score-card-header-image"><img src="{{match.homeTeam.logoUrl}}"
+          alt="{{match.homeTeam.shortName}}"></div>
+      <div mat-card-avatar class="score-card-header-image"><img src="{{match.awayTeam.logoUrl}}"
+          alt="{{match.homeTeam.shortName}}"></div>
+    </div>
     <mat-card-title>
-      <span [style.color]=match.homeTeam.teamColour>{{match.homeTeam.shortName}}</span>
-      VS
-      <span [style.color]=match.awayTeam.teamColour>{{match.awayTeam.shortName}}</span>
+      <span [style.color]=match.homeTeam.teamColour>{{match.homeTeam.shortName}}
+        <span class="font-size-3qtr" *ngIf="match.scores">({{match.scores.homeScore}} off
+          {{match.scores.homeOvers}})</span>
+      </span>
+      <br />
+      <span [style.color]=match.awayTeam.teamColour>{{match.awayTeam.shortName}}
+        <span class="font-size-3qtr" *ngIf="match.scores">({{match.scores.awayScore}} off
+          {{match.scores.awayOvers}})</span>
+      </span>
     </mat-card-title>
-    <mat-card-subtitle>{{match.venue.name}}</mat-card-subtitle>
+    <mat-card-subtitle class="font-size-3qtr">{{match.startDateTime | matchTime}}, {{match.venue.name}}</mat-card-subtitle>
   </mat-card-header>
   <mat-card-content>
     <div>{{match.series.name}}</div>

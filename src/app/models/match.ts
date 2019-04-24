@@ -20,8 +20,16 @@ export class Match {
     "startDateTime": string;
     "endDateTime": string;
     "isWomensMatch": string;
+    "scores": Score;
 
     public static LIVE = 'LIVE';
+}
+
+export class Score {
+    "homeScore": "4-176";
+    "homeOvers": "19.5";
+    "awayScore": "3-175";
+    "awayOvers": "20.0"
 }
 
 export class Series {

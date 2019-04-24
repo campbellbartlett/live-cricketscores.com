@@ -2,8 +2,10 @@
 @import "../../../../assets/css/mixins.scss";
 @import "../../../../assets/css/global.scss";
 
-.score-card-header-image {
-
+.mat-card-header {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: flex-end;
 }
 
 .score-card-header-image img{
