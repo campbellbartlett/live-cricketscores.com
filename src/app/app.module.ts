@@ -3,12 +3,12 @@ import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
 import { AppRoutingModule } from './app-routing.module';
 
 import {
   AppLayoutComponent,
   NavBarComponent,
+  SidenavListComponent,
   AboutPageComponent,
   HomePageComponent,
   BattingTableComponent,
@@ -30,7 +30,9 @@ import {
   MatTabsModule,
   MatTableModule,
   MatProgressSpinnerModule,
-  MatSlideToggleModule
+  MatSlideToggleModule,
+  MatSidenavModule,
+  MatListModule
 } from '@angular/material';
 
 
@@ -53,7 +55,8 @@ import { CommentaryTextPipe } from './components/score-card/pipe/commentary-text
     CommentaryHeaderPipe,
     CommentaryTextPipe,
     CommentaryContainerComponent,
-    CommentaryCardComponent
+    CommentaryCardComponent,
+    SidenavListComponent
   ],
   imports: [
     FlexLayoutModule,
@@ -69,6 +72,8 @@ import { CommentaryTextPipe } from './components/score-card/pipe/commentary-text
     MatTableModule,
     MatProgressSpinnerModule,
     MatSlideToggleModule,
+    MatSidenavModule,
+    MatListModule,
     AppRoutingModule,
     HttpClientModule
     ],
