@@ -39,6 +39,7 @@ import {
 import { RunsWicketsDeclaredPipe } from './components/score-card/pipe/runs-wickets-declared/runs-wickets-declared.pipe';
 import { CommentaryHeaderPipe } from './components/score-card/pipe/commentary-header.pipe';
 import { CommentaryTextPipe } from './components/score-card/pipe/commentary-text.pipe';
+import { MatchTimePipe } from './components/score-card/pipe/match-time.pipe';
 
 @NgModule({
   declarations: [
@@ -56,7 +57,8 @@ import { CommentaryTextPipe } from './components/score-card/pipe/commentary-text
     CommentaryTextPipe,
     CommentaryContainerComponent,
     CommentaryCardComponent,
-    SidenavListComponent
+    SidenavListComponent,
+    MatchTimePipe
   ],
   imports: [
     FlexLayoutModule,
