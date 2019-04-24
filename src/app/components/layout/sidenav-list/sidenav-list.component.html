@@ -1,0 +1,10 @@
+<mat-nav-list>
+    <a mat-list-item routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" (click)="onSidenavClose()">
+        <mat-icon>blur_circular</mat-icon>
+        <span class="nav-caption ml-2">Live Scores</span>
+    </a>
+    <a mat-list-item routerLink="/about" routerLinkActive="active" (click)="onSidenavClose()">
+        <mat-icon>category</mat-icon>
+        <span class="nav-caption ml-2">About</span>
+    </a>
+</mat-nav-list>

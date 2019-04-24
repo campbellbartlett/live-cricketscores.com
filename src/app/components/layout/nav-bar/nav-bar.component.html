@@ -1,21 +1,11 @@
-<nav class="navbar navbar-expand-lg bg-secondary static-top text-uppercase" id="mainNav">
-  <div class="container">
-    <a class="navbar-brand js-scroll-trigger" routerLink="">Live-CricketScores.com</a>
-    <button class="navbar-toggler navbar-toggler-right text-uppercase bg-primary text-white rounded" type="button"
-      data-toggle="collapse" data-target="#collapseExample">
-      Menu
-      <i class="fas fa-bars"></i>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarResponsive">
-      <ul class="navbar-nav ml-auto">
-        <li class="nav-item mx-0 mx-lg-1">
-          <a routerLink="" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }"
-            class="nav-link py-3 px-0 px-lg-3 rounded">Live Scores</a>
-        </li>
-        <li class="nav-item mx-0 mx-lg-1">
-          <a routerLink="about" routerLinkActive="active" class="nav-link py-3 px-0 px-lg-3 rounded ">About</a>
-        </li>
-      </ul>
+<mat-toolbar class="bg-secondary" color="primary" id="mainNav">
+    <div class="bg-primary rounded">
+        <button (click)="onToggleSidenav()" class="bg-primary btn-primary text-white rounded h-100">
+            Menu
+            <i class="fas fa-bars"></i>
+        </button>
     </div>
-  </div>
-</nav>
+    <div class="ml-5">
+        <a class="brand text-white text-uppercase d-none d-sm-block" routerLink="">Live-CricketScores.com</a>
+    </div>
+</mat-toolbar>

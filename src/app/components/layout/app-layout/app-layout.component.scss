@@ -1,0 +1,13 @@
+main {
+    height: 94vh;
+}
+
+mat-sidenav {
+    width: 250px;
+}
+
+@media(min-width:992px) {
+    mat-sidenav {
+        width: 25vw;
+    }
+}

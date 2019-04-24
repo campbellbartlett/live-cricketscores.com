@@ -1,6 +1,7 @@
 import {
     AppLayoutComponent,
-    NavBarComponent
+    NavBarComponent,
+    SidenavListComponent
 } from './layout/index';
 
 import {
@@ -24,6 +25,7 @@ import {
 export {
     AppLayoutComponent,
     NavBarComponent,
+    SidenavListComponent,
     AboutPageComponent,
     HomePageComponent,
     BattingTableComponent,
