@@ -1,4 +1,4 @@
-import { Comment } from './../../../models/commentary';
+import { Comment } from './../../models/commentary';
 import { Pipe, PipeTransform } from '@angular/core';
 
 @Pipe({

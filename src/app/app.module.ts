@@ -17,7 +17,10 @@ import {
   MiniScoreCardComponent,
   SocialIconComponent,
   CommentaryCardComponent,
-  CommentaryContainerComponent
+  CommentaryContainerComponent,
+  NewsViewComponent,
+  NewsCardComponent,
+  NewsPageComponent
 } from './components/index'
 
 import {
@@ -36,10 +39,10 @@ import {
 } from '@angular/material';
 
 
-import { RunsWicketsDeclaredPipe } from './components/score-card/pipe/runs-wickets-declared/runs-wickets-declared.pipe';
-import { CommentaryHeaderPipe } from './components/score-card/pipe/commentary-header.pipe';
-import { CommentaryTextPipe } from './components/score-card/pipe/commentary-text.pipe';
-import { MatchTimePipe } from './components/score-card/pipe/match-time.pipe';
+import { RunsWicketsDeclaredPipe } from './components/pipe/runs-wickets-declared/runs-wickets-declared.pipe';
+import { CommentaryHeaderPipe } from './components/pipe/commentary-header.pipe';
+import { CommentaryTextPipe } from './components/pipe/commentary-text.pipe';
+import { MatchTimePipe } from './components/pipe/match-time.pipe';
 
 @NgModule({
   declarations: [
@@ -58,7 +61,10 @@ import { MatchTimePipe } from './components/score-card/pipe/match-time.pipe';
     CommentaryContainerComponent,
     CommentaryCardComponent,
     SidenavListComponent,
-    MatchTimePipe
+    MatchTimePipe,
+    NewsViewComponent,
+    NewsCardComponent,
+    NewsPageComponent
   ],
   imports: [
     FlexLayoutModule,

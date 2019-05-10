@@ -1,29 +1,29 @@
-<mat-card class="score-card-small game-item box-shadow fixed-width">
-  <mat-card-header>
-    <div class="d-block">
-      <div mat-card-avatar class="score-card-header-image"><img src="{{match.homeTeam.logoUrl}}"
-          alt="{{match.homeTeam.shortName}}"></div>
-      <div mat-card-avatar class="score-card-header-image"><img src="{{match.awayTeam.logoUrl}}"
-          alt="{{match.homeTeam.shortName}}"></div>
-    </div>
-    <mat-card-title>
-      <span [style.color]=match.homeTeam.teamColour>{{match.homeTeam.shortName}}
-        <span class="font-size-3qtr" *ngIf="match.scores">({{match.scores.homeScore}} off
-          {{match.scores.homeOvers}})</span>
-      </span>
-      <br />
-      <span [style.color]=match.awayTeam.teamColour>{{match.awayTeam.shortName}}
-        <span class="font-size-3qtr" *ngIf="match.scores">({{match.scores.awayScore}} off
-          {{match.scores.awayOvers}})</span>
-      </span>
-    </mat-card-title>
-    <mat-card-subtitle class="font-size-3qtr">{{match.startDateTime | matchTime}}, {{match.venue.name}}</mat-card-subtitle>
-  </mat-card-header>
-  <mat-card-content>
-    <div>{{match.series.name}}</div>
-    <div>{{match.matchSummaryText}}</div>
-  </mat-card-content>
-  <mat-card-actions>
-    <button mat-button class="background-secondary" (click)="showDialog()">View</button>
-  </mat-card-actions>
+<mat-card class="m-3 box-shadow fixed-width">
+  <div class="card transition">
+    <div *ngIf="match.status === 'LIVE'" class="live-badge pulsate">LIVE</div>
+    <img class="image" src="{{match.series.shieldImageUrl}}">
+    <mat-card-header class="header">
+      <mat-card-title>
+        <h2 class="transition">
+          <span [style.color]=match.homeTeam.teamColour>{{match.homeTeam.shortName}}
+            <span class="font-size-3qtr" *ngIf="match.scores">({{match.scores.homeScore}} off
+              {{match.scores.homeOvers}})</span>
+          </span>
+          <br />
+          <span [style.color]=match.awayTeam.teamColour>{{match.awayTeam.shortName}}
+            <span class="font-size-3qtr" *ngIf="match.scores">({{match.scores.awayScore}} off
+              {{match.scores.awayOvers}})</span>
+          </span>
+        </h2>
+      </mat-card-title>
+      <mat-card-subtitle class="font-size-3qtr"><div class="subtitle transition">{{match.startDateTime | matchTime}}, {{match.venue.name}}</div></mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+      <div class="transition content">
+        <div>{{match.series.name}}</div>
+        <div>{{match.matchSummaryText}}</div>
+      </div>
+    </mat-card-content>
+    <button mat-button class="background-secondary cta transition" (click)="showDialog()">View</button>
+  </div>
 </mat-card>

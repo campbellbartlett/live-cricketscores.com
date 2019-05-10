@@ -1,3 +1,5 @@
+import { NewsViewComponent, NewsCardComponent } from './news/index';
+
 import {
     AppLayoutComponent,
     NavBarComponent,
@@ -6,7 +8,8 @@ import {
 
 import {
     AboutPageComponent,
-    HomePageComponent
+    HomePageComponent,
+    NewsPageComponent
 } from './routes/index'
 
 import { 
@@ -24,6 +27,7 @@ import {
 
 export {
     AppLayoutComponent,
+    NewsPageComponent,
     NavBarComponent,
     SidenavListComponent,
     AboutPageComponent,
@@ -34,5 +38,7 @@ export {
     MiniScoreCardComponent,
     CommentaryCardComponent,
     CommentaryContainerComponent,
-    SocialIconComponent
+    SocialIconComponent,
+    NewsCardComponent,
+    NewsViewComponent
 }
