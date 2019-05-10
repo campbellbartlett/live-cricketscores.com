@@ -1,0 +1,5 @@
+<div class="row" *ngIf="news">
+  <div class="col-12 col-md-6 col-xl-4" *ngFor="let article of news.newsArticles">
+    <app-news-card [article]="article"></app-news-card>
+  </div>
+</div>

@@ -1,0 +1,14 @@
+<mat-card class="m-3 box-shadow">
+  <div *ngIf="article" class="card transition">
+    <img mat-card-image class="image" src="{{article.image}}">
+    <mat-card-header class="header">
+      <mat-card-title>
+        <h2 class="transition">{{article.title}}</h2>
+      </mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <p class="m-1 content">{{article.summaryText}}</p>
+    </mat-card-content>
+    <div class="cta-container transition"><a href="{{article.url}}" target="_blank" class="cta">Read more</a></div>
+  </div>
+</mat-card>
