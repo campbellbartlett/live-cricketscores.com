@@ -3,27 +3,32 @@
 @import "../../../../assets/css/global.scss";
 
 .transition { transition: .3s cubic-bezier(.3, 0, 0, 1.3) }
+
 .card {
-    background-color: #fff;
-    height: 350px;
-    overflow: hidden;
-    min-width: 300px;
-    width: 25vw;
+    height: 280px;
     border: unset;
-    margin: auto;
 }
-.card:hover .cta-container {
-    display: inline;
-    margin-top: 300px;
-}
-.card:hover h2 {
-    background: $primary;
+h2 {
     color: #fff;
-    margin-top: 100px;
+    font-size: 24px;
+    font-weight: 200;
+    text-align: center;
+    width: 100%;
+    z-index: 2;
+    background: $primary;
+    margin-top: 50px;
     border-radius: 8px;
+    padding-left: 3px;
+    padding-right: 3px;
 }
-.card:hover h2 small { color: #fff }
-.card:hover p { 
+.header {
+    z-index: 2;
+}
+p {
+    font-size: 100%;
+    font-weight: normal;
+    text-align: center;
+    z-index: 2;
     color: #000;
     margin-top: 300px;
     background: #fff; 
@@ -31,39 +36,15 @@
     border: 1px solid rgba(0, 0, 0, 0.2);
     padding: 5px;
 }
-.card:hover .image {
-    -webkit-filter: unset; /* Safari 6.0 - 9.0 */
-    filter: unset;
-}
-h2 {
-    color: #fff;
-    font-size: 24px;
-    font-weight: 200;
-    margin-top: 140px;
-    text-align: center;
-    width: 100%;
-    z-index: 2;
-}
-.header {
-    z-index: 2;
-}
-p {
-    color: rgba(0,0,0,.6);
-    font-size: 100%;
-    font-weight: normal;
-    text-align: center;
-    z-index: 2;
-}
 /deep/ mat-card-content {
     z-index: 2;
 }
 .cta-container {
-    display: none;
-    margin-top: 320px;
     position: absolute;
     text-align: center;
-    width: 100%;
-    z-index: 2;
+    z-index: 2;    
+    display: inline;
+    margin-top: 240px;
 }
 .cta {
     -moz-border-radius: 2px;
@@ -87,7 +68,7 @@ p {
     text-transform: uppercase;
     transition: 0.2s ease-out;
 }
-.cta:hover {
+.cta {
     background-color: $secondary;
     box-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     color: #fff;
@@ -100,4 +81,117 @@ p {
     z-index: 1;
     -webkit-filter: blur(5px); /* Safari 6.0 - 9.0 */
     filter: blur(5px);
+}
+
+.card h2 small { color: #fff }
+.card .image {
+    -webkit-filter: unset; /* Safari 6.0 - 9.0 */
+    filter: unset;
+}
+
+
+@media screen and (min-width: 1025px) {
+    .card {
+        background-color: #fff;
+        height: 350px;
+        overflow: hidden;
+        min-width: 300px;
+        width: 25vw;
+        border: unset;
+        margin: auto;
+    }
+    .card:hover .cta-container {
+        display: inline;
+        margin-top: 270px;
+    }
+    .card:hover .cta {
+        color: #fff;
+    }
+    .card:hover h2 {
+        color: #fff;
+        margin-top: 100px;
+        border-radius: 8px;
+    }
+    .card:hover h2 small { color: #fff }
+    .card:hover p { 
+        color: #000;
+        margin-top: 300px;
+        border-radius: 8px;
+        padding: 5px;
+    }
+    .card:hover .image {
+        -webkit-filter: unset; /* Safari 6.0 - 9.0 */
+        filter: unset;
+    }
+    h2 {
+        background: $primary;
+        color: #fff;
+        font-size: 24px;
+        font-weight: 200;
+        margin-top: 140px;
+        text-align: center;
+        width: 100%;
+        z-index: 2;
+        padding-left: 3px;
+        padding-right: 3px;
+    }
+    .header {
+        z-index: 2;
+    }
+    p {
+        background: #fff; 
+        color: rgb(0,0,0);
+        font-size: 100%;
+        font-weight: normal;
+        text-align: center;
+        z-index: 2;
+         border: 1px solid rgba(0, 0, 0, 0.2);
+    }
+    /deep/ mat-card-content {
+        z-index: 2;
+    }
+    .cta-container {
+        display: none;
+        margin-top: 320px;
+        position: absolute;
+        text-align: center;
+        width: 100%;
+        z-index: 2;
+    }
+    .cta {
+        -moz-border-radius: 2px;
+        -moz-transition: 0.2s ease-out;
+        -ms-transition: 0.2s ease-out;
+        -o-transition: 0.2s ease-out;
+        -webkit-border-radius: 2px;
+        -webkit-transition: 0.2s ease-out;
+        background-clip: padding-box;
+        border: 2px solid $secondary;
+        border-radius: 2px;
+        color: $secondary;
+        display: inline-block;
+        font-size: 17px;
+        font-weight: 400;
+        height: 36px;
+        letter-spacing: 0.5px;
+        line-height: 36px;
+        margin-bottom: 15px;
+        padding: 0 2rem;
+        text-transform: uppercase;
+        transition: 0.2s ease-out;
+    }
+    .cta:hover {
+        background-color: $secondary;
+        box-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+        color: #fff;
+        -moz-box-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+        -webkit-box-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    }
+    .image {
+        overflow: hidden;
+        position: absolute;
+        z-index: 1;
+        -webkit-filter: blur(5px); /* Safari 6.0 - 9.0 */
+        filter: blur(5px);
+    }
 }

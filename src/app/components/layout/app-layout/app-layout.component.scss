@@ -6,6 +6,10 @@ mat-sidenav {
     width: 250px;
 }
 
+.overflow-x-hidden {
+    overflow-x: hidden;
+}
+
 @media(min-width:992px) {
     mat-sidenav {
         width: 25vw;

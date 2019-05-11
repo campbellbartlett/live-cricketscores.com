@@ -12,6 +12,10 @@ h6 {
   @include heading-font;
 }
 
+* {
+    -webkit-overflow-scrolling: touch;
+}
+
 // Custom Horizontal Rule with Star Icon
 hr.star-light,
 hr.star-dark {

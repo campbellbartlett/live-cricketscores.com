@@ -1,11 +1,3 @@
 @import "../../../../assets/css/variables.scss";
 @import "../../../../assets/css/mixins.scss";
 @import "../../../../assets/css/global.scss";
-
-::ng-deep .mat-slide-toggle.mat-checked .mat-slide-toggle-thumb {
-    background-color: $primary;
-}
-
-::ng-deep .mat-slide-toggle.mat-checked .mat-slide-toggle-bar {
-    background-color: rgba(165,214,167,.54);
-}

@@ -1,3 +1,4 @@
+import { NewsArticleDialogComponent } from './components/news/news-article-dialog/news-article-dialog.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
@@ -64,7 +65,8 @@ import { MatchTimePipe } from './components/pipe/match-time.pipe';
     MatchTimePipe,
     NewsViewComponent,
     NewsCardComponent,
-    NewsPageComponent
+    NewsPageComponent,
+    NewsArticleDialogComponent
   ],
   imports: [
     FlexLayoutModule,
@@ -85,7 +87,7 @@ import { MatchTimePipe } from './components/pipe/match-time.pipe';
     AppRoutingModule,
     HttpClientModule
     ],
-  entryComponents: [FullScoreCardComponent],
+  entryComponents: [FullScoreCardComponent, NewsArticleDialogComponent],
   bootstrap: [AppLayoutComponent],
   providers: [],
   schemas: [
