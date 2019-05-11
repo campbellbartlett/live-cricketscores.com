@@ -1,0 +1,21 @@
+@import "../../../../assets/css/variables";
+@import "../../../../assets/css/mixins.scss";
+@import "../../../../assets/css/global.scss";
+
+.frame {
+    width: 100%;
+    height: 100%;
+}
+.button {
+    background-color: $secondary;
+    width: 200px;
+    margin: auto;
+}
+
+.mat-dialog-content {
+    width: 100%;
+    height: 100%;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+}
