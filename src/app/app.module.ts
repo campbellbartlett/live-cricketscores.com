@@ -2,9 +2,13 @@ import { NewsArticleDialogComponent } from './components/news/news-article-dialo
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
-import { FlexLayoutModule } from '@angular/flex-layout';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
+import { RouteReuseStrategy } from '@angular/router';
+
+import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
+import { SplashScreen } from '@ionic-native/splash-screen/ngx';
+import { StatusBar } from '@ionic-native/status-bar/ngx';
 
 import {
   AppLayoutComponent,
@@ -69,8 +73,8 @@ import { MatchTimePipe } from './components/pipe/match-time.pipe';
     NewsArticleDialogComponent
   ],
   imports: [
-    FlexLayoutModule,
     BrowserModule,
+    IonicModule.forRoot(),
     BrowserAnimationsModule,
     MatButtonModule,
     MatMenuModule,
@@ -86,10 +90,14 @@ import { MatchTimePipe } from './components/pipe/match-time.pipe';
     MatListModule,
     AppRoutingModule,
     HttpClientModule
-    ],
+  ],
   entryComponents: [FullScoreCardComponent, NewsArticleDialogComponent],
   bootstrap: [AppLayoutComponent],
-  providers: [],
+  providers: [
+    StatusBar,
+    SplashScreen,
+    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
+  ],
   schemas: [
     CUSTOM_ELEMENTS_SCHEMA
   ]

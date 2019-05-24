@@ -1,0 +1,26 @@
+// http://ionicframework.com/docs/theming/
+@import '~@ionic/angular/css/core.css';
+@import '~@ionic/angular/css/normalize.css';
+@import '~@ionic/angular/css/structure.css';
+@import '~@ionic/angular/css/typography.css';
+@import '~@ionic/angular/css/display.css';
+@import '~@ionic/angular/css/padding.css';
+@import '~@ionic/angular/css/float-elements.css';
+@import '~@ionic/angular/css/text-alignment.css';
+@import '~@ionic/angular/css/text-transformation.css';
+@import '~@ionic/angular/css/flex-utils.css';
+
+
+@import "assets/css/variables.scss";
+@import "assets/css/mixins.scss";
+@import "assets/css/global.scss";
+@import "assets/css/navbar.scss";
+@import "assets/css/masthead.scss";
+@import "assets/css/portfolio.scss";
+@import "assets/css/contact.scss";
+@import "assets/css/footer.scss";
+@import "assets/css/bootstrap-overrides.scss";
+@import "assets/css/dialog.scss";
+@import '@angular/material/prebuilt-themes/deeppurple-amber.css';
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

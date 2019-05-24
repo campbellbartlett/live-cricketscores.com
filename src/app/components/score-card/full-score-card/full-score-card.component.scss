@@ -2,13 +2,32 @@
 @import "../../../../assets/css/mixins.scss";
 @import "../../../../assets/css/global.scss";
 
-.background-secondary {
-  background-color: $secondary;
+.width-3em {
+  width: 3em;
+}
+
+.momentum-scroll {
+  overflow-y: auto;
+}
+
+ion-chip {
+    position: absolute;
+}
+
+.vs-header {
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: auto;
+  margin-bottom: 0px;
+  height: 100px;
 }
 
 @media (min-width: 992px) {
   .left-50 {
     left: 50%;
+  }
+  .vs-header {
+    height: 1.6em;
   }
 }
 
@@ -19,14 +38,4 @@
   .translate-40-0 {
     transform: translate(-40%, 0%);
   }
-}
-
-.card-header-image img {
-  display: inline-block;
-  width: 100%;
-  height: auto;
-}
-
-.width-3em {
-  width: 3em;
 }
