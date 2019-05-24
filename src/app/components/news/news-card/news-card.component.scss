@@ -15,24 +15,29 @@ h2 {
     text-align: center;
     width: 100%;
     z-index: 2;
-    background: $primary;
     margin-top: 50px;
     border-radius: 8px;
     padding-left: 3px;
     padding-right: 3px;
 }
+h2 span { 
+   color: white; 
+   letter-spacing: -1px;  
+   background: rgb(0, 0, 0); /* fallback color */
+   background: rgba(0, 0, 0, 0.7);
+}
+
 .header {
     z-index: 2;
 }
 p {
+    background: rgba(255, 255, 255, 0.7);
     font-size: 100%;
     font-weight: normal;
     text-align: center;
     z-index: 2;
     color: #000;
     margin-top: 300px;
-    background: #fff; 
-    border-radius: 8px;
     border: 1px solid rgba(0, 0, 0, 0.2);
     padding: 5px;
 }
@@ -68,6 +73,12 @@ p {
     text-transform: uppercase;
     transition: 0.2s ease-out;
 }
+.mobile {
+    display: inline;
+}
+.desktop {
+    display: none;
+}
 .cta {
     background-color: $secondary;
     box-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
@@ -78,6 +89,7 @@ p {
 .image {
     overflow: hidden;
     position: absolute;
+    margin: auto;
     z-index: 1;
     -webkit-filter: blur(5px); /* Safari 6.0 - 9.0 */
     filter: blur(5px);
@@ -116,7 +128,6 @@ p {
     .card:hover p { 
         color: #000;
         margin-top: 300px;
-        border-radius: 8px;
         padding: 5px;
     }
     .card:hover .image {
@@ -124,7 +135,6 @@ p {
         filter: unset;
     }
     h2 {
-        background: $primary;
         color: #fff;
         font-size: 24px;
         font-weight: 200;
@@ -139,7 +149,6 @@ p {
         z-index: 2;
     }
     p {
-        background: #fff; 
         color: rgb(0,0,0);
         font-size: 100%;
         font-weight: normal;
@@ -179,6 +188,12 @@ p {
         padding: 0 2rem;
         text-transform: uppercase;
         transition: 0.2s ease-out;
+    }
+    .mobile {
+        display: none;
+    }
+    .desktop {
+        display: inline;
     }
     .cta:hover {
         background-color: $secondary;

@@ -1,9 +1,11 @@
-<mat-card class="m-3 box-shadow fixed-width">
-  <div class="card transition">
-    <div *ngIf="match.status === 'LIVE'" class="live-badge pulsate">LIVE</div>
-    <img class="image" src="{{match.series.shieldImageUrl}}">
-    <mat-card-header class="header">
-      <mat-card-title>
+<ion-card class="m-3">
+  <div class="card transition flex-column">
+    <ion-chip *ngIf="match.status === 'LIVE'" color="success" class="live-badge pulse">LIVE</ion-chip>
+    <ion-chip *ngIf="match.status === 'COMPLETED'" outline color="secondary">Completed</ion-chip>
+    <ion-chip *ngIf="match.status === 'UPCOMING'" outline color="warning">Upcoming</ion-chip>
+    <!-- <img class="image" src="{{match.series.shieldImageUrl}}"> -->
+    <ion-card-header class="header">
+      <ion-card-title>
         <h2 class="transition">
           <span [style.color]=match.homeTeam.teamColour>{{match.homeTeam.shortName}}
             <span class="font-size-3qtr" *ngIf="match.scores">({{match.scores.homeScore}} off
@@ -15,15 +17,17 @@
               {{match.scores.awayOvers}})</span>
           </span>
         </h2>
-      </mat-card-title>
-      <mat-card-subtitle class="font-size-3qtr"><div class="subtitle transition">{{match.startDateTime | matchTime}}, {{match.venue.name}}</div></mat-card-subtitle>
-    </mat-card-header>
-    <mat-card-content>
-      <div class="transition content">
+      </ion-card-title>
+      <ion-card-subtitle class="font-size-3qtr">
+        <div class="subtitle transition">{{match.startDateTime | matchTime}}, {{match.venue.name}}</div>
+      </ion-card-subtitle>
+    </ion-card-header>
+    <ion-card-content>
+      <div class="transition content text-center">
         <div>{{match.series.name}}</div>
         <div>{{match.matchSummaryText}}</div>
       </div>
-    </mat-card-content>
-    <button mat-button class="background-secondary cta transition" (click)="showDialog()">View</button>
+      <ion-button expand="block" color="dark" shape="round" fill="clear" class="transition" (click)="showDialog()">View</ion-button>
+    </ion-card-content>
   </div>
-</mat-card>
+</ion-card>

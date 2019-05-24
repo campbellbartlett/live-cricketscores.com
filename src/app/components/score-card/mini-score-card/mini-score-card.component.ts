@@ -1,8 +1,11 @@
+import { FullScoreCard } from './../../../models/scorecard';
 import { Component, OnInit, Input } from '@angular/core';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { Match } from 'src/app/models/match';
 import { MatchSubject } from './../../../models/matchSubject';
 import { FullScoreCardComponent } from '../full-score-card/full-score-card.component';
+import { Router } from '@angular/router';
+import { ModalController } from '@ionic/angular';
 
 @Component({
   selector: 'app-mini-score-card',
@@ -16,20 +19,22 @@ export class MiniScoreCardComponent implements OnInit {
 
   public match: Match;
 
-  constructor(public dialog: MatDialog) { }
+  constructor(public dialog: MatDialog,
+    private modalController: ModalController) { }
 
   ngOnInit() {
     this.match = this.matchSubject.match;
     this.matchSubject.subject.subscribe(match => this.match = match);
   }
 
-  showDialog() {
-    this.dialog.open(FullScoreCardComponent, {
-      panelClass: 'score-card-dialog',
-      width: '80%',
-      height: '80%',
-      data: { matchSubject: this.matchSubject }
+  async showDialog() {
+    const modal = await this.modalController.create({
+      component: FullScoreCardComponent,
+      componentProps: {
+        'matchSubject': this.matchSubject
+      }
     });
+    await modal.present();
   }
 
 }

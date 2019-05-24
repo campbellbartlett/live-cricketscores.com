@@ -3,14 +3,15 @@
     <img mat-card-image class="image" src="{{article.image}}">
     <mat-card-header class="header">
       <mat-card-title>
-        <h2 class="transition">{{article.title}}</h2>
+        <h2 class="transition"><span>{{article.title}}</span></h2>
       </mat-card-title>
     </mat-card-header>
     <mat-card-content>
-      <p class="m-1 content">{{article.summaryText}}</p>
+      <p class="m-1 content"><span>{{article.summaryText}}</span></p>
     </mat-card-content>
     <div class="cta-container transition">
-      <button (click)="showDialog()" class="cta">Read more</button>
+      <button (click)="showDialog()" class="cta desktop">Read more</button>
+      <a href="{{article.url}}" class="cta mobile">Read more</a>
     </div>
   </div>
 </mat-card>

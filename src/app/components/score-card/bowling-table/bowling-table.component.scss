@@ -2,18 +2,6 @@
 @import "../../../../assets/css/mixins.scss";
 @import "../../../../assets/css/global.scss";
 
-.mat-header-cell {
-    color: $secondary;
-}
-
-.mat-cell {
-    color: $primary;
-}
-
-.mat-footer-cell {
-    color: $secondary;
-}
-
 .mat-column-name {
     width: 20%;
 }

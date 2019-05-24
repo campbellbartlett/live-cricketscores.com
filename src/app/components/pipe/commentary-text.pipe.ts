@@ -8,9 +8,9 @@ export class CommentaryTextPipe implements PipeTransform {
 
   transform(commentary: Comment, args?: any): string {
     var text = commentary.text;
-    text = text.replace('SIX!', '<span class="font-weight-bold text-colour-secondary">SIX!</span>');
-    text = text.replace('FOUR!', '<span class="font-weight-bold text-colour-secondary">FOUR!</span>');
-    text = text.replace('OUT!', '<span class="font-weight-bold text-colour-secondary">OUT!</span>');
+    text = text.replace('SIX!', '<span class="font-weight-bold">SIX!</span>');
+    text = text.replace('FOUR!', '<span class="font-weight-bold">FOUR!</span>');
+    text = text.replace('OUT!', '<span class="font-weight-bold">OUT!</span>');
     text = text.split('. ').join(".<br/>");
     return text;
   }

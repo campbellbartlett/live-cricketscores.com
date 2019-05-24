@@ -1,6 +1,7 @@
+import { ModalController } from '@ionic/angular';
 import { Commentary } from './../../../models/commentary';
 import { MatchSubject } from './../../../models/matchSubject';
-import { Component, OnInit, Inject } from '@angular/core';
+import { Component, OnInit, Inject, Input } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { CricketDataService } from 'src/app/services/cricket-data.service';
 import { FullScoreCard } from 'src/app/models/scorecard';
@@ -17,6 +18,9 @@ var moment = require('moment');
 export class FullScoreCardComponent implements OnInit {
 
   public scorecard: FullScoreCard;
+
+  @Input()
+  matchSubject: MatchSubject;
     
   public match: Match;
   public matchCommentary: Commentary;
@@ -28,22 +32,17 @@ export class FullScoreCardComponent implements OnInit {
   public live: boolean = false;
 
   constructor(
-    public dialogRef: MatDialogRef<FullScoreCardComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: any,
     private cricketDataService: CricketDataService,
+    public modalController: ModalController
   ) { }
 
   ngOnInit() {
-    this.setUpMatch(this.data.matchSubject.match);
-    this.data.matchSubject.subject.subscribe(match => this.match = match);
+    this.setUpMatch(this.matchSubject.match);
+    this.matchSubject.subject.subscribe(match => this.match = match);
   }
 
   ngOnDestroy() {
     clearInterval(this.timer);
-  }
-
-  closeDialog() {
-    this.dialogRef.close();
   }
 
   private setUpMatch(match: Match) {
@@ -100,5 +99,11 @@ export class FullScoreCardComponent implements OnInit {
 
   private isMatchLive(): boolean {
     return !(moment(this.match.startDateTime) > moment() || this.match.status != 'LIVE');
+  }
+
+  public async closeDialog() {
+    await this.modalController.getTop().then(dialog => {
+      dialog.dismiss();
+    })
   }
 }

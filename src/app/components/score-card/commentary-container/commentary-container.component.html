@@ -2,10 +2,10 @@
   <div *ngFor="let inning of matchCommentary.commentary.innings">
     <div *ngFor="let over of inning.overs">
       <div class="m-2">
-        <h3 class="text-colour-secondary" *ngIf="over.number > 0">Over {{over.number}}</h3>
-        <h3 class="text-colour-secondary" *ngIf="over.number == 0">Pre-game</h3>
+        <h3 *ngIf="over.number > 0">Over {{over.number}}</h3>
+        <h3 *ngIf="over.number == 0">Pre-game</h3>
         <div *ngFor="let ball of over.balls">
-          <h5 class="text-colour-secondary" *ngIf="over.number > 0">{{over.number}}.{{ball.ballNumber}}</h5>
+          <h5 *ngIf="over.number > 0">{{over.number}}.{{ball.ballNumber}}</h5>
             <app-commentary-card [over]="over" [ball]="ball" [comments]="ball.comments"></app-commentary-card>
         </div>
       </div>

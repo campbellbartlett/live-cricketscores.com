@@ -2,6 +2,7 @@ import { MatchSubject } from './../../../models/matchSubject';
 import { Component, OnInit } from '@angular/core';
 import { CricketDataService } from 'src/app/services/cricket-data.service';
 import { Match } from '../../../models/index';
+import { NavController } from '@ionic/angular'
 
 @Component({
   selector: 'app-home-page',
@@ -16,7 +17,8 @@ export class HomePageComponent implements OnInit {
   private timer: NodeJS.Timer;
 
   constructor(
-    private cricketDataService: CricketDataService) { }
+    private cricketDataService: CricketDataService,
+    public navCtrl: NavController) { }
 
   ngOnInit() {
     console.log("Getting matches");
