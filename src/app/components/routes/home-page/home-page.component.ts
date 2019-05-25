@@ -1,8 +1,7 @@
-import { MatchSubject } from './../../../models/matchSubject';
-import { Component, OnInit } from '@angular/core';
+import { MatchSubject } from '../../../models/matchSubject';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import { CricketDataService } from 'src/app/services/cricket-data.service';
-import { Match } from '../../../models/index';
-import { NavController } from '@ionic/angular'
+import { Match } from '../../../models';
 
 @Component({
   selector: 'app-home-page',
@@ -10,22 +9,21 @@ import { NavController } from '@ionic/angular'
   styleUrls: ['./home-page.component.scss'],
   providers: [CricketDataService]
 })
-export class HomePageComponent implements OnInit {
+export class HomePageComponent implements OnInit, OnDestroy {
 
   public matches: Array<MatchSubject>;
 
   private timer: NodeJS.Timer;
 
   constructor(
-    private cricketDataService: CricketDataService,
-    public navCtrl: NavController) { }
+    private cricketDataService: CricketDataService) { }
 
   ngOnInit() {
-    console.log("Getting matches");
+    console.log('Getting matches');
     this.getMatches();
     this.timer = setInterval(() => this.updateMatches(), 30000);
   }
-  
+
   ngOnDestroy() {
     clearInterval(this.timer);
   }
@@ -34,7 +32,7 @@ export class HomePageComponent implements OnInit {
     this.cricketDataService.getCurrentMatches()
     .then(matchResponse => {
       const updatedMatches = matchResponse.matchList.matches;
-      
+
       this.removeOldMatches(updatedMatches);
 
       this.addNewMatches(updatedMatches);

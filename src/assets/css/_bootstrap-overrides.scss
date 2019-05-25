@@ -1,11 +1,6 @@
 // Bootstrap overrides for this template
 a {
-  color: $primary;
-  &:focus,
-  &:hover,
-  &:active {
-    color: darken($primary, 10%);
-  }
+  color:  var(--ion-color-secondary);
 }
 
 .btn {

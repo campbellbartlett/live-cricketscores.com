@@ -9,4 +9,8 @@ export class MatchSubject {
 
     match: Match;
     subject: Subject<Match>;
+
+  public toString(): string {
+    return this.match.id + '';
+  }
 }

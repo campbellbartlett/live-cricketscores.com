@@ -9,19 +9,19 @@
         <ion-content>
             <ion-list>
                 <ion-menu-toggle auto-hide="false">
-                    <ion-item button routerLink="/">
+                    <ion-item button routerLink="/" routerDirection="root">
                         <ion-icon slot="start" name='home'></ion-icon>
                         <ion-label>
                             Live Scores
                         </ion-label>
                     </ion-item>
-                    <ion-item button routerLink="/news">
+                    <ion-item button routerLink="/news" routerDirection="forward">
                         <ion-icon slot="start" name='paper'></ion-icon>
                         <ion-label>
                             News
                         </ion-label>
                     </ion-item>
-                    <ion-item button routerLink="/about">
+                    <ion-item button routerLink="/about" routerDirection="forward">
                         <ion-icon slot="start" name='quote'></ion-icon>
                         <ion-label>
                             About
@@ -33,18 +33,7 @@
     </ion-menu>
 
     <ion-page class="ion-page" main>
-        <ion-header>
-            <ion-toolbar color="secondary">
-                <ion-buttons slot="start">
-                    <ion-menu-toggle>
-                        <ion-button>
-                            <ion-icon slot="icon-only" name="menu"></ion-icon>
-                        </ion-button>
-                    </ion-menu-toggle>
-                </ion-buttons>
-                <ion-title>Live-Cricketscores.com</ion-title>
-            </ion-toolbar>
-        </ion-header>
+      <app-header></app-header>
         <ion-content padding>
             <ion-router-outlet></ion-router-outlet>
         </ion-content>

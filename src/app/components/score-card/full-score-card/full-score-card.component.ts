@@ -1,27 +1,27 @@
-import { ModalController } from '@ionic/angular';
-import { Commentary } from './../../../models/commentary';
-import { MatchSubject } from './../../../models/matchSubject';
-import { Component, OnInit, Inject, Input } from '@angular/core';
-import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
-import { CricketDataService } from 'src/app/services/cricket-data.service';
-import { FullScoreCard } from 'src/app/models/scorecard';
-import { Match } from 'src/app/models/match';
-import { isEmpty } from 'src/app/utils/ObjectUtils';
+import {Commentary} from '../../../models/commentary';
+import {MatchSubject} from '../../../models/matchSubject';
+import {Component, Input, OnDestroy, OnInit} from '@angular/core';
+import {CricketDataService} from 'src/app/services/cricket-data.service';
+import {FullScoreCard} from 'src/app/models/scorecard';
+import {Match} from 'src/app/models/match';
+import {isEmpty} from 'src/app/utils/ObjectUtils';
+import {ActivatedRoute, Router} from '@angular/router';
+import {NavController} from '@ionic/angular';
 
-var moment = require('moment');
+const moment = require('moment');
 
 @Component({
   selector: 'app-full-score-card',
   templateUrl: './full-score-card.component.html',
   styleUrls: ['./full-score-card.component.scss']
 })
-export class FullScoreCardComponent implements OnInit {
+export class FullScoreCardComponent implements OnInit, OnDestroy {
 
   public scorecard: FullScoreCard;
 
   @Input()
   matchSubject: MatchSubject;
-    
+
   public match: Match;
   public matchCommentary: Commentary;
 
@@ -29,16 +29,26 @@ export class FullScoreCardComponent implements OnInit {
   private matchId: number;
   private seriesId: number;
 
-  public live: boolean = false;
+  public live = false;
 
   constructor(
     private cricketDataService: CricketDataService,
-    public modalController: ModalController
-  ) { }
+    private route: ActivatedRoute,
+    private router: Router,
+    private navCtrl: NavController
+  ) {
+    this.route.queryParams.subscribe(params => {
+      this.matchSubject = params.matchSubject;
+    });
+  }
 
   ngOnInit() {
-    this.setUpMatch(this.matchSubject.match);
-    this.matchSubject.subject.subscribe(match => this.match = match);
+    try {
+      this.setUpMatch(this.matchSubject.match);
+      this.matchSubject.subject.subscribe(match => this.match = match);
+    } catch {
+      this.navCtrl.navigateRoot('/');
+    }
   }
 
   ngOnDestroy() {
@@ -51,7 +61,7 @@ export class FullScoreCardComponent implements OnInit {
     this.match = match;
     this.getScore();
     this.getCommentary();
-    this.timer = setInterval(() => this.refresh(), 10000);    
+    this.timer = setInterval(() => this.refresh(), 10000);
   }
 
   private refresh() {
@@ -83,7 +93,7 @@ export class FullScoreCardComponent implements OnInit {
           return;
         }
 
-        if (this.scorecard.innings.length != updatedScoreCard.innings.length) {
+        if (this.scorecard.innings.length !== updatedScoreCard.innings.length) {
           this.scorecard = updatedScoreCard;
         } else {
           const updatedInnings = updatedScoreCard.innings[updatedScoreCard.innings.length - 1];
@@ -99,11 +109,5 @@ export class FullScoreCardComponent implements OnInit {
 
   private isMatchLive(): boolean {
     return !(moment(this.match.startDateTime) > moment() || this.match.status != 'LIVE');
-  }
-
-  public async closeDialog() {
-    await this.modalController.getTop().then(dialog => {
-      dialog.dismiss();
-    })
   }
 }
