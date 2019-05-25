@@ -9,7 +9,7 @@ import { NavigationEnd, Router } from '@angular/router';
 export class HeaderComponent implements OnInit, OnDestroy {
   private routerEvents: any;
   private currentUrl: string;
-  private canGoBack: boolean;
+  public canGoBack: boolean;
 
   private nonRootRoutes = ['/', '/about', '/news'];
 
