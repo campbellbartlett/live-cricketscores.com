@@ -10,7 +10,8 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "postinstall": "ionic build --aot --prod"
+    "postinstall": "ionic build --aot --prod",
+    "ionic start": "ionic serve"
   },
   "private": true,
   "dependencies": {

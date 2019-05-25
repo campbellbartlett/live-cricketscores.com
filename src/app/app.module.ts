@@ -1,58 +1,57 @@
-import { NewsArticleDialogComponent } from './components/news/news-article-dialog/news-article-dialog.component';
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
-import { HttpClientModule } from '@angular/common/http';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { AppRoutingModule } from './app-routing.module';
-import { RouteReuseStrategy } from '@angular/router';
+import {NewsArticleDialogComponent} from './components/news/news-article-dialog/news-article-dialog.component';
+import {BrowserModule} from '@angular/platform-browser';
+import {CUSTOM_ELEMENTS_SCHEMA, NgModule} from '@angular/core';
+import {HttpClientModule} from '@angular/common/http';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {AppRoutingModule} from './app-routing.module';
+import {RouteReuseStrategy} from '@angular/router';
 
-import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
-import { SplashScreen } from '@ionic-native/splash-screen/ngx';
-import { StatusBar } from '@ionic-native/status-bar/ngx';
+import {IonicModule, IonicRouteStrategy} from '@ionic/angular';
+import {SplashScreen} from '@ionic-native/splash-screen/ngx';
+import {StatusBar} from '@ionic-native/status-bar/ngx';
 
 import {
-  AppLayoutComponent,
-  NavBarComponent,
-  SidenavListComponent,
   AboutPageComponent,
-  HomePageComponent,
+  AppLayoutComponent,
   BattingTableComponent,
   BowlingTableComponent,
-  FullScoreCardComponent,
-  MiniScoreCardComponent,
-  SocialIconComponent,
   CommentaryCardComponent,
   CommentaryContainerComponent,
-  NewsViewComponent,
+  FullScoreCardComponent,
+  HeaderComponent,
+  HomePageComponent,
+  MiniScoreCardComponent,
   NewsCardComponent,
-  NewsPageComponent
-} from './components/index'
+  NewsPageComponent,
+  NewsViewComponent,
+  SocialIconComponent
+} from './components/index';
 
 import {
   MatButtonModule,
-  MatMenuModule,
-  MatToolbarModule,
-  MatIconModule,
   MatCardModule,
   MatDialogModule,
-  MatTabsModule,
-  MatTableModule,
+  MatIconModule,
+  MatListModule,
+  MatMenuModule,
   MatProgressSpinnerModule,
-  MatSlideToggleModule,
   MatSidenavModule,
-  MatListModule
+  MatSlideToggleModule,
+  MatTableModule,
+  MatTabsModule,
+  MatToolbarModule
 } from '@angular/material';
 
 
-import { RunsWicketsDeclaredPipe } from './components/pipe/runs-wickets-declared/runs-wickets-declared.pipe';
-import { CommentaryHeaderPipe } from './components/pipe/commentary-header.pipe';
-import { CommentaryTextPipe } from './components/pipe/commentary-text.pipe';
-import { MatchTimePipe } from './components/pipe/match-time.pipe';
+import {RunsWicketsDeclaredPipe} from './components/pipe/runs-wickets-declared/runs-wickets-declared.pipe';
+import {CommentaryHeaderPipe} from './components/pipe/commentary-header.pipe';
+import {CommentaryTextPipe} from './components/pipe/commentary-text.pipe';
+import {MatchTimePipe} from './components/pipe/match-time.pipe';
 
 @NgModule({
   declarations: [
     AppLayoutComponent,
-    NavBarComponent,
+    HeaderComponent,
     HomePageComponent,
     FullScoreCardComponent,
     AboutPageComponent,
@@ -65,7 +64,6 @@ import { MatchTimePipe } from './components/pipe/match-time.pipe';
     CommentaryTextPipe,
     CommentaryContainerComponent,
     CommentaryCardComponent,
-    SidenavListComponent,
     MatchTimePipe,
     NewsViewComponent,
     NewsCardComponent,

@@ -2,8 +2,7 @@ import { NewsViewComponent, NewsCardComponent } from './news/index';
 
 import {
     AppLayoutComponent,
-    NavBarComponent,
-    SidenavListComponent
+    HeaderComponent
 } from './layout/index';
 
 import {
@@ -28,8 +27,7 @@ import {
 export {
     AppLayoutComponent,
     NewsPageComponent,
-    NavBarComponent,
-    SidenavListComponent,
+    HeaderComponent,
     AboutPageComponent,
     HomePageComponent,
     BattingTableComponent,
