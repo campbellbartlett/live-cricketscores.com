@@ -1,0 +1,22 @@
+<ion-content>
+  <ion-list>
+    <ion-item *ngFor="let over of overs">
+      <div class="d-flex flex-column w-100">
+        <h3 *ngIf="over.number > 0">Over {{over.number}}</h3>
+        <h3 *ngIf="over.number == 0">Pre-game</h3>
+        <div *ngFor="let ball of over.balls">
+          <h5 *ngIf="over.number > 0">{{over.number}}.{{ball.ballNumber}}</h5>
+          <app-commentary-card [over]="over" [ball]="ball" [comments]="ball.comments"></app-commentary-card>
+        </div>
+      </div>
+    </ion-item>
+  </ion-list>
+
+  <ion-infinite-scroll threshold="100px" (ionInfinite)="loadData($event)">
+    <ion-infinite-scroll-content
+      loadingSpinner="bubbles"
+      loadingText="Loading more data...">
+    </ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+
+</ion-content>  

@@ -1,42 +1,35 @@
-import { NewsViewComponent, NewsCardComponent } from './news/index';
+import {NewsCardComponent, NewsViewComponent} from './news';
+
+import {AppLayoutComponent, HeaderComponent} from './layout';
+
+import {AboutPageComponent, HomePageComponent, NewsPageComponent} from './routes';
 
 import {
-    AppLayoutComponent,
-    HeaderComponent
-} from './layout/index';
+  BattingTableComponent,
+  BowlingTableComponent,
+  CommentaryCardComponent,
+  CommentaryContainerComponent,
+  FullScoreCardComponent,
+  InningsCommentaryComponent,
+  MiniScoreCardComponent
+} from './score-card';
 
-import {
-    AboutPageComponent,
-    HomePageComponent,
-    NewsPageComponent
-} from './routes/index'
-
-import { 
-    BattingTableComponent,
-    BowlingTableComponent,
-    FullScoreCardComponent,
-    MiniScoreCardComponent,
-    CommentaryContainerComponent,
-    CommentaryCardComponent
-} from './score-card/index'
-
-import {
-    SocialIconComponent
-} from './social-icon/social-icon.component'
+import {SocialIconComponent} from './social-icon/social-icon.component';
 
 export {
-    AppLayoutComponent,
-    NewsPageComponent,
-    HeaderComponent,
-    AboutPageComponent,
-    HomePageComponent,
-    BattingTableComponent,
-    BowlingTableComponent,
-    FullScoreCardComponent,
-    MiniScoreCardComponent,
-    CommentaryCardComponent,
-    CommentaryContainerComponent,
-    SocialIconComponent,
-    NewsCardComponent,
-    NewsViewComponent
-}
+  AppLayoutComponent,
+  NewsPageComponent,
+  HeaderComponent,
+  AboutPageComponent,
+  HomePageComponent,
+  BattingTableComponent,
+  BowlingTableComponent,
+  FullScoreCardComponent,
+  MiniScoreCardComponent,
+  CommentaryCardComponent,
+  CommentaryContainerComponent,
+  SocialIconComponent,
+  NewsCardComponent,
+  NewsViewComponent,
+  InningsCommentaryComponent
+};
