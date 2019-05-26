@@ -20,6 +20,11 @@
   height: fit-content;
 }
 
+/deep/ .mat-tab-body-wrapper {
+  height: -webkit-fill-available;
+  height: -moz-available;
+}
+
 @media (min-width: 992px) {
   .left-50 {
     left: 50%;

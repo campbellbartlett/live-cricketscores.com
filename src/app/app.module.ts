@@ -20,6 +20,7 @@ import {
   FullScoreCardComponent,
   HeaderComponent,
   HomePageComponent,
+  InningsCommentaryComponent,
   MiniScoreCardComponent,
   NewsCardComponent,
   NewsPageComponent,
@@ -68,7 +69,8 @@ import {MatchTimePipe} from './components/pipe/match-time.pipe';
     NewsViewComponent,
     NewsCardComponent,
     NewsPageComponent,
-    NewsArticleDialogComponent
+    NewsArticleDialogComponent,
+    InningsCommentaryComponent
   ],
   imports: [
     BrowserModule,
@@ -94,10 +96,11 @@ import {MatchTimePipe} from './components/pipe/match-time.pipe';
   providers: [
     StatusBar,
     SplashScreen,
-    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
+    {provide: RouteReuseStrategy, useClass: IonicRouteStrategy}
   ],
   schemas: [
     CUSTOM_ELEMENTS_SCHEMA
   ]
 })
-export class AppModule { }
+export class AppModule {
+}

@@ -1,13 +1,13 @@
-<div mat-dialog-title class="card-header text-uppercase text-center d-flex p-0">
-  <h2 class="vs-header">
-    <span [style.color]=match.homeTeam.teamColour>{{match.homeTeam.shortName}}</span> VS
-    <span [style.color]=match.awayTeam.teamColour>{{match.awayTeam.shortName}}</span>
-  </h2>
-</div>
-<div mat-dialog-content class="momentum-scroll w-80">
-  <div *ngIf="scorecard" class="momentum-scroll">
-    <mat-tab-group mat-align-tabs="center" [selectedIndex]="scorecard.innings.length - 1">
-      <div *ngFor="let inning of scorecard.innings" class="momentum-scroll">
+<div *ngIf="match">
+  <div mat-dialog-title class="card-header text-uppercase text-center d-flex p-0">
+    <h2 class="vs-header">
+      <span [style.color]=match.homeTeam.teamColour>{{match.homeTeam.shortName}}</span> VS
+      <span [style.color]=match.awayTeam.teamColour>{{match.awayTeam.shortName}}</span>
+    </h2>
+  </div>
+  <div *ngIf="scorecard">
+    <mat-tab-group [dynamicHeight]='true' mat-align-tabs="center" [selectedIndex]="scorecard.innings.length - 1">
+      <div *ngFor="let inning of scorecard.innings">
         <mat-tab label="{{inning.name}}({{inning | runsWicketsDeclared}})">
           <div class="w-100 d-flex-c">
             <ion-chip *ngIf="match.status === 'LIVE'" color="success" class="live-badge pulse">LIVE</ion-chip>
@@ -25,7 +25,7 @@
           </div>
         </mat-tab>
       </div>
-      <mat-tab label="Commentary" class="momentum-scroll">
+      <mat-tab label="Commentary">
         <app-commentary-container [matchCommentary]="matchCommentary"></app-commentary-container>
       </mat-tab>
     </mat-tab-group>

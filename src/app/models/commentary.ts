@@ -10,8 +10,17 @@ export class Commentary {
         teamColour: string;
         overs: [Over]
       }
-    ]
-  }
+      ]
+  };
+}
+
+export class Inning {
+  id: number;
+  name: string;
+  shortName: string;
+  teamId: number;
+  teamColour: string;
+  overs: [Over];
 }
 
 export class Over {
@@ -28,7 +37,7 @@ export class Over {
     runsConcededinOver: string;
     extrasConcededinOver: string;
     wicketsTakeninOver: string;
-  }
+  };
 }
 
 export class Ball {
@@ -63,5 +72,5 @@ export class Comment {
     batsman4sinInnings: string;
     batsman6sinInnings: string;
     strikeRate: string;
-  }
+  };
 }

@@ -1,12 +1,10 @@
 import {Commentary} from '../../../models/commentary';
-import {MatchSubject} from '../../../models/matchSubject';
-import {Component, Input, OnDestroy, OnInit} from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {CricketDataService} from 'src/app/services/cricket-data.service';
 import {FullScoreCard} from 'src/app/models/scorecard';
 import {Match} from 'src/app/models/match';
 import {isEmpty} from 'src/app/utils/ObjectUtils';
-import {ActivatedRoute, Router} from '@angular/router';
-import {NavController} from '@ionic/angular';
+import {ActivatedRoute} from '@angular/router';
 
 const moment = require('moment');
 
@@ -19,9 +17,6 @@ export class FullScoreCardComponent implements OnInit, OnDestroy {
 
   public scorecard: FullScoreCard;
 
-  @Input()
-  matchSubject: MatchSubject;
-
   public match: Match;
   public matchCommentary: Commentary;
 
@@ -33,32 +28,26 @@ export class FullScoreCardComponent implements OnInit, OnDestroy {
 
   constructor(
     private cricketDataService: CricketDataService,
-    private route: ActivatedRoute,
-    private router: Router,
-    private navCtrl: NavController
+    private route: ActivatedRoute
   ) {
     this.route.queryParams.subscribe(params => {
-      this.matchSubject = params.matchSubject;
+      this.matchId = params.matchId;
+      this.seriesId = params.seriesId;
     });
   }
 
   ngOnInit() {
-    try {
-      this.setUpMatch(this.matchSubject.match);
-      this.matchSubject.subject.subscribe(match => this.match = match);
-    } catch {
-      this.navCtrl.navigateRoot('/');
-    }
+    this.cricketDataService.getMatch(this.seriesId, this.matchId).then(match => {
+      this.match = match;
+      this.setUpMatch();
+    });
   }
 
   ngOnDestroy() {
     clearInterval(this.timer);
   }
 
-  private setUpMatch(match: Match) {
-    this.seriesId = match.series.id;
-    this.matchId = match.id;
-    this.match = match;
+  private setUpMatch() {
     this.getScore();
     this.getCommentary();
     this.timer = setInterval(() => this.refresh(), 10000);
@@ -74,7 +63,17 @@ export class FullScoreCardComponent implements OnInit, OnDestroy {
 
   private getCommentary() {
     this.cricketDataService.getCommentaryForMatchSeries(this.matchId, this.seriesId)
-      .then(commentary => this.matchCommentary = commentary);
+      .then(commentary => {
+        if (this.matchCommentary) {
+          commentary.commentary.innings.forEach(inning => {
+            if (this.matchCommentary.commentary.innings.some(i => i.id === inning.id)) {
+              this.matchCommentary.commentary.innings.find(i => i.id === inning.id).overs = inning.overs;
+            }
+          });
+        } else {
+          this.matchCommentary = commentary;
+        }
+      });
   }
 
   private getScore() {
@@ -108,6 +107,6 @@ export class FullScoreCardComponent implements OnInit, OnDestroy {
   }
 
   private isMatchLive(): boolean {
-    return !(moment(this.match.startDateTime) > moment() || this.match.status != 'LIVE');
+    return this.match && !(moment(this.match.startDateTime) > moment() || this.match.status !== 'LIVE');
   }
 }

@@ -30,7 +30,8 @@ export class MiniScoreCardComponent implements OnInit {
   showScoreCard() {
     const navigationExtras: NavigationExtras = {
       queryParams: {
-        matchSubject: this.matchSubject
+        matchId: this.match.id,
+        seriesId: this.match.series.id
       }
     };
     this.navCtrl.navigateForward('/scoreCard', navigationExtras);

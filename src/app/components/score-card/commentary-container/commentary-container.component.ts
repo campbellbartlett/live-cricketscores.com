@@ -1,5 +1,5 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { Commentary } from 'src/app/models/commentary';
+import {Component, Input, OnInit} from '@angular/core';
+import {Commentary} from 'src/app/models/commentary';
 
 @Component({
   selector: 'app-commentary-container',
@@ -8,10 +8,10 @@ import { Commentary } from 'src/app/models/commentary';
 })
 export class CommentaryContainerComponent implements OnInit {
 
+  constructor() { }
+
   @Input()
   public matchCommentary: Commentary;
-
-  constructor() { }
 
   ngOnInit() {
   }
