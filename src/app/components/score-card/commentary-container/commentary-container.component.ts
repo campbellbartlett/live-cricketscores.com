@@ -26,13 +26,13 @@ export class CommentaryContainerComponent implements OnInit, OnDestroy,  OnChang
 
   public hasUpdate = false;
 
+  public displayedInnings: Inning;
+
   private timer: NodeJS.Timer;
 
   private hasShownToastSinceLastRefresh = false;
 
   private dismissToast: () => void;
-
-  private displayedInnings: Inning;
 
   private static totalBallsInInnings(innings): number {
     return innings.overs.map(over => over.balls.length)
