@@ -1,16 +1,15 @@
+import {Series} from './match';
+
 export class Commentary {
-  meta: any;
+  meta: {
+    series: Series;
+    matchTypeId: number;
+    matchId: number;
+    total: number;
+    nextPage: number;
+  };
   commentary: {
-    innings: [
-      {
-        id: number;
-        name: string;
-        shortName: string;
-        teamId: number;
-        teamColour: string;
-        overs: [Over]
-      }
-      ]
+    innings: [Inning]
   };
 }
 

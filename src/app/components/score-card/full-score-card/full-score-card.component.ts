@@ -58,22 +58,11 @@ export class FullScoreCardComponent implements OnInit, OnDestroy {
       return;
     }
     this.getScore();
-    this.getCommentary();
   }
 
   private getCommentary() {
     this.cricketDataService.getCommentaryForMatchSeries(this.matchId, this.seriesId)
-      .then(commentary => {
-        if (this.matchCommentary) {
-          commentary.commentary.innings.forEach(inning => {
-            if (this.matchCommentary.commentary.innings.some(i => i.id === inning.id)) {
-              this.matchCommentary.commentary.innings.find(i => i.id === inning.id).overs = inning.overs;
-            }
-          });
-        } else {
-          this.matchCommentary = commentary;
-        }
-      });
+      .then(commentary => this.matchCommentary = commentary);
   }
 
   private getScore() {

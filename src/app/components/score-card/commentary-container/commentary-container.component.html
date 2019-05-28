@@ -1,9 +1,13 @@
 <ion-content>
-  <mat-tab-group class="h-100" *ngIf="matchCommentary" [selectedIndex]="matchCommentary.commentary.innings.length - 1">
-    <div *ngFor="let inning of matchCommentary.commentary.innings">
-      <mat-tab label="{{inning.name}}">
-        <app-innings-commentary [innings]="inning"></app-innings-commentary>
-      </mat-tab>
-    </div>
-  </mat-tab-group>
+  <div *ngIf="matchCommentary && displayedInnings"
+       class="d-flex flex-column justify-content-center align-items-center h-95">
+    <ion-button class="mt-5" color="success" (click)="presentActionSheet()">
+      {{displayedInnings.name}}
+      <ion-icon slot="end" name="more"></ion-icon>
+    </ion-button>
+    <app-innings-commentary class="h-100 w-100" *ngFor="let inning of matchCommentary.commentary.innings"
+                            [hidden]="displayedInnings.id !== inning.id" [innings]="inning" [hasUpdate]="hasUpdate"
+                            (refreshEvent)="refreshCommentary()"></app-innings-commentary>
+  </div>
+
 </ion-content>
