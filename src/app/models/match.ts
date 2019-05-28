@@ -5,6 +5,8 @@ export class MatchResponse {
 }
 
 export class Match {
+
+  public static LIVE = 'LIVE';
   'id': number;
   'matchTypeId': number;
   'fixturePriority': number;
@@ -26,15 +28,13 @@ export class Match {
   'endDateTime': string;
   'isWomensMatch': string;
   'scores': Score;
-
-  public static LIVE = 'LIVE';
 }
 
 export class Score {
-  'homeScore': '4-176';
-  'homeOvers': '19.5';
-  'awayScore': '3-175';
-  'awayOvers': '20.0';
+  'homeScore': string;
+  'homeOvers': string;
+  'awayScore': string;
+  'awayOvers': string;
 }
 
 export class Series {

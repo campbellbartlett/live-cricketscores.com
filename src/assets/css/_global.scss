@@ -16,6 +16,20 @@ h6 {
     -webkit-overflow-scrolling: touch;
 }
 
+.pulse {
+  animation: shadow-pulse 1.25s infinite;
+}
+
+@keyframes shadow-pulse
+{
+  0% {
+    box-shadow: 0 0 0 0px rgba(138, 241, 129, 0.2);
+  }
+  100% {
+    box-shadow: 0 0 0 6px rgba(177, 235, 171, 0);
+  }
+}
+
 // Custom Horizontal Rule with Star Icon
 hr.star-light,
 hr.star-dark {

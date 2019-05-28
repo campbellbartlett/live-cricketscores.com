@@ -1,4 +1,4 @@
-import {Component, Input, OnInit, ViewChild} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output, ViewChild} from '@angular/core';
 import {Inning, Over} from 'src/app/models/commentary';
 import {IonInfiniteScroll} from '@ionic/angular';
 
@@ -10,6 +10,12 @@ import {IonInfiniteScroll} from '@ionic/angular';
 export class InningsCommentaryComponent implements OnInit {
 
   @ViewChild(IonInfiniteScroll) infiniteScroll: IonInfiniteScroll;
+
+  @Input()
+  public hasUpdate: boolean;
+
+  @Output()
+  refreshEvent = new EventEmitter<any>();
 
   public overs: Array<Over> = [];
 
@@ -40,6 +46,10 @@ export class InningsCommentaryComponent implements OnInit {
       if (this.overs.length === this._innings.overs.length) {
         event.target.disabled = true;
       }
+  }
+
+  refresh() {
+    this.refreshEvent.next();
   }
 
 }
