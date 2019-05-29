@@ -1,8 +1,8 @@
-import {AfterViewChecked, AfterViewInit, Component, Input, OnChanges, OnDestroy, OnInit} from '@angular/core';
+import {Component, Input, OnChanges, OnDestroy, OnInit} from '@angular/core';
 import {Commentary, Inning} from 'src/app/models/commentary';
 import {CricketDataService} from '../../../services/cricket-data.service';
-import {ActionSheetController, ToastController} from '@ionic/angular';
-import {ActionSheetButton} from '@ionic/core/dist/types/components/action-sheet/action-sheet-interface';
+import {ToastController} from '@ionic/angular';
+import {of} from 'rxjs';
 
 
 @Component({
@@ -10,11 +10,10 @@ import {ActionSheetButton} from '@ionic/core/dist/types/components/action-sheet/
   templateUrl: './commentary-container.component.html',
   styleUrls: ['./commentary-container.component.scss']
 })
-export class CommentaryContainerComponent implements OnInit, OnDestroy,  OnChanges{
+export class CommentaryContainerComponent implements OnInit, OnDestroy, OnChanges {
 
   constructor(public cricketDataService: CricketDataService,
-              public toastController: ToastController,
-              public actionSheetController: ActionSheetController) {
+              public toastController: ToastController) {
     this.cricketDataService = cricketDataService;
   }
 
@@ -96,6 +95,14 @@ export class CommentaryContainerComponent implements OnInit, OnDestroy,  OnChang
     return numBalls !== otherBalls;
   }
 
+  inningsSelected = event => {
+    for (const innings of this.matchCommentary.commentary.innings) {
+      if (innings.id === +event.target.value) {
+        this.displayedInnings = innings;
+      }
+    }
+  };
+
   async presentNewCommentsToast(onShow: () => void) {
     this.hasShownToastSinceLastRefresh = true;
     const toast = await this.toastController.create({
@@ -120,28 +127,4 @@ export class CommentaryContainerComponent implements OnInit, OnDestroy,  OnChang
     toast.present();
     this.dismissToast = () => toast.dismiss();
   }
-
-  async presentActionSheet() {
-    const buttons = this.matchCommentary.commentary.innings.map(innings => {
-      const options: ActionSheetButton = new ActionSheetButtonImpl();
-      options.text = innings.name;
-      options.handler = () => { this.displayedInnings = innings; };
-      return options;
-    });
-
-    const actionSheet = await this.actionSheetController.create({
-      header: 'Show Innings',
-      buttons
-    });
-    await actionSheet.present();
-  }
-
-}
-
-class ActionSheetButtonImpl implements ActionSheetButton {
-  cssClass: string | string[];
-  handler: () => (boolean | void | Promise<boolean>);
-  icon: string;
-  role: 'cancel' | 'destructive' | 'selected' | string;
-  text: string;
 }

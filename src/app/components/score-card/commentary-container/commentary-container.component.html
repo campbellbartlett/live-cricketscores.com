@@ -1,13 +1,14 @@
 <ion-content>
-  <div *ngIf="matchCommentary && displayedInnings"
-       class="d-flex flex-column justify-content-center align-items-center h-95">
-    <ion-button class="mt-5" color="success" (click)="presentActionSheet()">
-      {{displayedInnings.name}}
-      <ion-icon slot="end" name="more"></ion-icon>
-    </ion-button>
-    <app-innings-commentary class="h-100 w-100" *ngFor="let inning of matchCommentary.commentary.innings"
-                            [hidden]="displayedInnings.id !== inning.id" [innings]="inning" [hasUpdate]="hasUpdate"
-                            (refreshEvent)="refreshCommentary()"></app-innings-commentary>
+  <div *ngIf="matchCommentary && displayedInnings" class="h-95 d-flex flex-column align-items-center">
+    <ion-select placeholder="Choose innings" (ionChange)="inningsSelected($event)" [selectedText]="displayedInnings.name">
+      <ion-select-option *ngFor="let innings of matchCommentary.commentary.innings" value="{{innings.id}}">{{innings.name}}</ion-select-option>
+    </ion-select>
+    <div class="d-flex flex-column justify-content-center align-items-center w-100 h-95">
+          <app-innings-commentary class="h-100 w-100" *ngFor="let inning of matchCommentary.commentary.innings"
+                                  [hidden]="displayedInnings.id !== inning.id" [innings]="inning" [hasUpdate]="hasUpdate"
+                                  (refreshEvent)="refreshCommentary()"></app-innings-commentary>
+    </div>
+
   </div>
 
 </ion-content>
