@@ -26,7 +26,7 @@ export class FullScoreCardComponent implements OnInit, OnDestroy {
 
   public live = false;
 
-  public selectedTab;
+  public selectedTab = 2;
 
   constructor(
     private cricketDataService: CricketDataService,
@@ -80,7 +80,7 @@ export class FullScoreCardComponent implements OnInit, OnDestroy {
 
         if (!this.scorecard) {
           this.scorecard = updatedScoreCard;
-          this.selectedTab = this.scorecard.innings.length - 1;
+          this.selectedTab = this.scorecard.innings.length;
           return;
         }
 
@@ -106,7 +106,11 @@ export class FullScoreCardComponent implements OnInit, OnDestroy {
     return this.match && !(moment(this.match.startDateTime) > moment() || this.match.status !== 'LIVE');
   }
 
+  public tabChanged(event): void {
+    this.selectedTab = event.currentTarget.value;
+  }
+
   public switchToCommentaryTab = () => {
-    this.selectedTab = this.scorecard.innings.length;
+    this.selectedTab = this.scorecard.innings.length + 1;
   }
 }
