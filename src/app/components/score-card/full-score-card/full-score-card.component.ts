@@ -26,7 +26,9 @@ export class FullScoreCardComponent implements OnInit, OnDestroy {
 
   public live = false;
 
-  public selectedTab = 2;
+  public selectedTab: number;
+
+  public newCommentCount = 0;
 
   constructor(
     private cricketDataService: CricketDataService,
@@ -112,5 +114,9 @@ export class FullScoreCardComponent implements OnInit, OnDestroy {
 
   public switchToCommentaryTab = () => {
     this.selectedTab = this.scorecard.innings.length + 1;
+  }
+
+  public updateCommentCount(numberOfNewComments) {
+    this.newCommentCount = numberOfNewComments;
   }
 }

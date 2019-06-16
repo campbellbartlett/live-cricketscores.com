@@ -28,10 +28,15 @@
   height: fit-content;
 }
 
-///deep/ .mat-tab-body-wrapper {
-//  height: -webkit-fill-available;
-//  height: -moz-available;
-//}
+.commentary-icon {
+  position: relative;
+}
+
+.commentary-badge {
+  position: absolute;
+  top: 0px;
+  transform: translate(1em, 4px);
+}
 
 ::ng-deep .mat-tab-body-wrapper {
   flex: 1 1 100%;
