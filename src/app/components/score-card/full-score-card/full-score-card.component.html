@@ -3,6 +3,8 @@
     <h2 class="vs-header">
       <span [style.color]=match.homeTeam.teamColour>{{match.homeTeam.shortName}}</span> VS
       <span [style.color]=match.awayTeam.teamColour>{{match.awayTeam.shortName}}</span>
+      <br>
+      <span> {{match.startDateTime | matchTime}}</span>
     </h2>
   </div>
   <div *ngIf="scorecard">
