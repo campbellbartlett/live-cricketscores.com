@@ -1,10 +1,10 @@
-import {Commentary} from '../../../models/commentary';
-import {Component, OnDestroy, OnInit} from '@angular/core';
-import {CricketDataService} from 'src/app/services/cricket-data.service';
-import {FullScoreCard} from 'src/app/models/scorecard';
-import {Match} from 'src/app/models/match';
-import {isEmpty} from 'src/app/utils/ObjectUtils';
-import {ActivatedRoute} from '@angular/router';
+import { Commentary } from '../../../models/commentary';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { CricketDataService } from 'src/app/services/cricket-data.service';
+import { FullScoreCard } from 'src/app/models/scorecard';
+import { Match } from 'src/app/models/match';
+import { isEmpty } from 'src/app/utils/ObjectUtils';
+import { ActivatedRoute } from '@angular/router';
 
 const moment = require('moment');
 
@@ -25,6 +25,8 @@ export class FullScoreCardComponent implements OnInit, OnDestroy {
   private seriesId: number;
 
   public live = false;
+
+  public selectedTab;
 
   constructor(
     private cricketDataService: CricketDataService,
@@ -78,24 +80,33 @@ export class FullScoreCardComponent implements OnInit, OnDestroy {
 
         if (!this.scorecard) {
           this.scorecard = updatedScoreCard;
+          this.selectedTab = this.scorecard.innings.length - 1;
           return;
         }
 
         if (this.scorecard.innings.length !== updatedScoreCard.innings.length) {
           this.scorecard = updatedScoreCard;
         } else {
-          const updatedInnings = updatedScoreCard.innings[updatedScoreCard.innings.length - 1];
-          const currentInnings = this.scorecard.innings[this.scorecard.innings.length - 1];
-          currentInnings.batsmen = updatedInnings.batsmen;
-          currentInnings.bowlers = updatedInnings.bowlers;
-          currentInnings.over = updatedInnings.over;
-          currentInnings.run = updatedInnings.run;
-          currentInnings.wicket = updatedInnings.wicket;
+          this.mergeNewScoreCard(updatedScoreCard);
         }
       });
   }
 
+  private mergeNewScoreCard(updatedScoreCard: FullScoreCard) {
+    const updatedInnings = updatedScoreCard.innings[updatedScoreCard.innings.length - 1];
+    const currentInnings = this.scorecard.innings[this.scorecard.innings.length - 1];
+    currentInnings.batsmen = updatedInnings.batsmen;
+    currentInnings.bowlers = updatedInnings.bowlers;
+    currentInnings.over = updatedInnings.over;
+    currentInnings.run = updatedInnings.run;
+    currentInnings.wicket = updatedInnings.wicket;
+  }
+
   private isMatchLive(): boolean {
     return this.match && !(moment(this.match.startDateTime) > moment() || this.match.status !== 'LIVE');
+  }
+
+  public switchToCommentaryTab = () => {
+    this.selectedTab = this.scorecard.innings.length;
   }
 }

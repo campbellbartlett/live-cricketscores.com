@@ -6,7 +6,7 @@
     </h2>
   </div>
   <div *ngIf="scorecard">
-    <mat-tab-group class="height-100-vh" [dynamicHeight]='true' mat-align-tabs="center" [selectedIndex]="scorecard.innings.length - 1">
+    <mat-tab-group class="height-100-vh" [dynamicHeight]='true' mat-align-tabs="center" [selectedIndex]="selectedTab">
       <div *ngFor="let inning of scorecard.innings">
         <mat-tab label="{{inning.name}}({{inning | runsWicketsDeclared}})">
           <ion-content class="content">
@@ -29,7 +29,7 @@
       </div>
       <mat-tab label="Commentary">
         <ion-content class="content">
-          <app-commentary-container [matchCommentary]="matchCommentary" [live]="live"></app-commentary-container>
+          <app-commentary-container [matchCommentary]="matchCommentary" [live]="live" [switchToTab]='switchToCommentaryTab'></app-commentary-container>
         </ion-content>
       </mat-tab>
     </mat-tab-group>
