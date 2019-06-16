@@ -1,0 +1,7 @@
+<div class="w-100 flex-row">
+  <div class='col-1 mt-1 m-auto flex-row justify-content-around d-flex'>
+    <ion-chip *ngIf="match.status === 'LIVE'" color="success" class="live-badge pulse flex-shrink-0">LIVE</ion-chip>
+    <ion-chip *ngIf="match.status === 'COMPLETED'" outline color="secondary flex-shrink-0">Completed</ion-chip>
+    <ion-chip *ngIf="match.status === 'UPCOMING'" outline color="warning flex-shrink-0">Upcoming</ion-chip>
+  </div>
+</div>
