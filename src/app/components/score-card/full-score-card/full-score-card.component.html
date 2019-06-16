@@ -7,32 +7,19 @@
   </h2>
 </ion-header>
 <ion-content *ngIf='match && scorecard' class='content'>
-  <div style="display: flex;flex-direction: column;height: 100%;">
+  <div class='content flex-column'>
     <div *ngFor="let inning of scorecard.innings">
       <div *ngIf="inning.id == selectedTab">
-        <div class="w-100 d-flex-c">
-          <ion-chip *ngIf="match.status === 'LIVE'" color="success" class="live-badge pulse">LIVE</ion-chip>
-          <ion-chip *ngIf="match.status === 'COMPLETED'" outline color="secondary">Completed</ion-chip>
-          <ion-chip *ngIf="match.status === 'UPCOMING'" outline color="warning">Upcoming</ion-chip>
-        </div>
-        <p class="text-center mt-5 mb-0">{{match.matchSummaryText}}</p>
-        <div class="">
-          <h3 class="text-center mt-5 mb-0">Batting</h3>
-          <app-batting-table [inning]=inning></app-batting-table>
-        </div>
-        <div class="">
-          <h3 class="text-center mt-5">Bowling</h3>
-          <app-bowling-table [inning]=inning></app-bowling-table>
-        </div>
+        <app-game-status [match]="match"></app-game-status>
+        <app-innings-score-card [match]="match" [inning]="inning"></app-innings-score-card>
       </div>
     </div>
     <div class='content' *ngIf="scorecard.innings.length + 1 == selectedTab">
-      <app-commentary-container [matchCommentary]="matchCommentary" [live]="live" [switchToTab]='switchToCommentaryTab'>
-      </app-commentary-container>
+      <app-commentary-container [matchCommentary]="matchCommentary" [live]="live" [switchToTab]='switchToCommentaryTab'></app-commentary-container>
     </div>
   </div>
 </ion-content>
-<ion-content *ngIf="scorecard == null">
+<ion-content *ngIf="scorecard == null && match">
   <h5 class="text-center mt-5 mb-0 text-colour-primary">{{match.matchSummaryText}}</h5>
 </ion-content>
 <ion-footer>

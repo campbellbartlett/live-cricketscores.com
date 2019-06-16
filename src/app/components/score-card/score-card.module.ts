@@ -17,6 +17,8 @@ import { CommentaryTextPipe } from '../pipe/commentary-text.pipe';
 import { RunsWicketsDeclaredPipe } from '../pipe/runs-wickets-declared/runs-wickets-declared.pipe';
 import { CommentaryHeaderPipe } from '../pipe/commentary-header.pipe';
 import { MatchTimePipe } from '../pipe/match-time.pipe';
+import { GameStatusComponent } from './game-status/game-status.component';
+import { InningsScoreCardComponent } from './innings-score-card/innings-score-card.component';
 
 @NgModule({
   imports: [
@@ -52,6 +54,8 @@ import { MatchTimePipe } from '../pipe/match-time.pipe';
     CommentaryContainerComponent,
     CommentaryCardComponent,
     InningsCommentaryComponent,
+    GameStatusComponent,
+    InningsScoreCardComponent,
     RunsWicketsDeclaredPipe,
     CommentaryHeaderPipe,
     CommentaryTextPipe,
@@ -64,7 +68,8 @@ import { MatchTimePipe } from '../pipe/match-time.pipe';
     MiniScoreCardComponent,
     CommentaryContainerComponent,
     CommentaryCardComponent,
-    InningsCommentaryComponent
+    InningsCommentaryComponent,
+    GameStatusComponent
   ],
   schemas: [
     CUSTOM_ELEMENTS_SCHEMA
