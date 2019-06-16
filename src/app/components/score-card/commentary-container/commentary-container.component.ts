@@ -2,7 +2,6 @@ import {Component, Input, OnChanges, OnDestroy, OnInit} from '@angular/core';
 import {Commentary, Inning} from 'src/app/models/commentary';
 import {CricketDataService} from '../../../services/cricket-data.service';
 import {ToastController} from '@ionic/angular';
-import {of} from 'rxjs';
 
 
 @Component({
@@ -19,6 +18,9 @@ export class CommentaryContainerComponent implements OnInit, OnDestroy, OnChange
 
   @Input()
   public matchCommentary: Commentary;
+
+  @Input()
+  public switchToTab: any;
 
   @Input()
   public live: boolean;
@@ -70,14 +72,23 @@ export class CommentaryContainerComponent implements OnInit, OnDestroy, OnChange
         if (this.isInningsUpdated(commentary, this.matchCommentary)) {
           this.hasUpdate = true;
           if (!this.hasShownToastSinceLastRefresh) {
-            this.presentNewCommentsToast(() => {
-              this.hasShownToastSinceLastRefresh = false;
-              this.hasUpdate = false;
-              this.refreshCommentary();
-            });
+            this.showNewCommentaryToast();
           }
         }
       });
+  }
+
+  private showNewCommentaryToast() {
+    this.presentNewCommentsToast(() => {
+      this.handleShowCommentaryClicked();
+    });
+  }
+
+  private handleShowCommentaryClicked() {
+    this.hasShownToastSinceLastRefresh = false;
+    this.hasUpdate = false;
+    this.refreshCommentary();
+    this.switchToTab();
   }
 
   private isInningsUpdated(commentary: Commentary, other: Commentary): boolean {
@@ -107,7 +118,7 @@ export class CommentaryContainerComponent implements OnInit, OnDestroy, OnChange
     this.hasShownToastSinceLastRefresh = true;
     const toast = await this.toastController.create({
       header: 'Commentary Updated',
-      position: 'top',
+      position: 'bottom',
       buttons: [
         {
           side: 'start',
