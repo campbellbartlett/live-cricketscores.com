@@ -1,42 +1,51 @@
-<div *ngIf="match">
-  <div mat-dialog-title class="card-header text-uppercase text-center d-flex p-0">
-    <h2 class="vs-header">
-      <span [style.color]=match.homeTeam.teamColour>{{match.homeTeam.shortName}}</span> VS
-      <span [style.color]=match.awayTeam.teamColour>{{match.awayTeam.shortName}}</span>
-      <br>
-      <span> {{match.startDateTime | matchTime}}</span>
-    </h2>
-  </div>
-  <div *ngIf="scorecard">
-    <mat-tab-group class="height-100-vh" [dynamicHeight]='true' mat-align-tabs="center" [selectedIndex]="selectedTab">
-      <div *ngFor="let inning of scorecard.innings">
-        <mat-tab label="{{inning.name}}({{inning | runsWicketsDeclared}})">
-          <ion-content class="content">
-            <div class="w-100 d-flex-c">
-              <ion-chip *ngIf="match.status === 'LIVE'" color="success" class="live-badge pulse">LIVE</ion-chip>
-              <ion-chip *ngIf="match.status === 'COMPLETED'" outline color="secondary">Completed</ion-chip>
-              <ion-chip *ngIf="match.status === 'UPCOMING'" outline color="warning">Upcoming</ion-chip>
-            </div>
-            <p class="text-center mt-5 mb-0">{{match.matchSummaryText}}</p>
-            <div class="">
-              <h3 class="text-center mt-5 mb-0">Batting</h3>
-              <app-batting-table [inning]=inning></app-batting-table>
-            </div>
-            <div class="">
-              <h3 class="text-center mt-5">Bowling</h3>
-              <app-bowling-table [inning]=inning></app-bowling-table>
-            </div>
-          </ion-content>
-        </mat-tab>
+<ion-header>
+  <h2 *ngIf='match' class="vs-header text-uppercase text-center p-0">
+    <span [style.color]=match.homeTeam.teamColour>{{match.homeTeam.shortName}}</span> VS
+    <span [style.color]=match.awayTeam.teamColour>{{match.awayTeam.shortName}}</span>
+    <br>
+    <span> {{match.startDateTime | matchTime}}</span>
+  </h2>
+</ion-header>
+<ion-content *ngIf='match && scorecard' class='content'>
+  <div style="display: flex;flex-direction: column;height: 100%;">
+    <div *ngFor="let inning of scorecard.innings">
+      <div *ngIf="inning.id == selectedTab">
+        <div class="w-100 d-flex-c">
+          <ion-chip *ngIf="match.status === 'LIVE'" color="success" class="live-badge pulse">LIVE</ion-chip>
+          <ion-chip *ngIf="match.status === 'COMPLETED'" outline color="secondary">Completed</ion-chip>
+          <ion-chip *ngIf="match.status === 'UPCOMING'" outline color="warning">Upcoming</ion-chip>
+        </div>
+        <p class="text-center mt-5 mb-0">{{match.matchSummaryText}}</p>
+        <div class="">
+          <h3 class="text-center mt-5 mb-0">Batting</h3>
+          <app-batting-table [inning]=inning></app-batting-table>
+        </div>
+        <div class="">
+          <h3 class="text-center mt-5">Bowling</h3>
+          <app-bowling-table [inning]=inning></app-bowling-table>
+        </div>
       </div>
-      <mat-tab label="Commentary">
-        <ion-content class="content">
-          <app-commentary-container [matchCommentary]="matchCommentary" [live]="live" [switchToTab]='switchToCommentaryTab'></app-commentary-container>
-        </ion-content>
-      </mat-tab>
-    </mat-tab-group>
+    </div>
+    <div class='content' *ngIf="scorecard.innings.length + 1 == selectedTab">
+      <app-commentary-container [matchCommentary]="matchCommentary" [live]="live" [switchToTab]='switchToCommentaryTab'>
+      </app-commentary-container>
+    </div>
   </div>
-  <div *ngIf="scorecard == null">
-    <h5 class="text-center mt-5 mb-0 text-colour-primary">{{match.matchSummaryText}}</h5>
-  </div>
-</div>
+</ion-content>
+<ion-content *ngIf="scorecard == null">
+  <h5 class="text-center mt-5 mb-0 text-colour-primary">{{match.matchSummaryText}}</h5>
+</ion-content>
+<ion-footer>
+  <ion-toolbar *ngIf='scorecard'>
+    <ion-segment (ionChange)="tabChanged($event)" value='{{scorecard.innings.length}}'>
+      <ion-segment-button *ngFor="let inning of scorecard.innings" value="{{inning.id}}">
+        {{inning.shortName}}
+        <ion-icon name="list-box"></ion-icon>
+      </ion-segment-button>
+      <ion-segment-button value="{{scorecard.innings.length + 1}}">
+        Commentary
+        <ion-icon name="chatboxes"></ion-icon>
+      </ion-segment-button>
+    </ion-segment>
+  </ion-toolbar>
+</ion-footer>
