@@ -1,102 +1,39 @@
-import {NewsArticleDialogComponent} from './components/news/news-article-dialog/news-article-dialog.component';
-import {BrowserModule} from '@angular/platform-browser';
-import {CUSTOM_ELEMENTS_SCHEMA, NgModule} from '@angular/core';
-import {HttpClientModule} from '@angular/common/http';
-import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {AppRoutingModule} from './app-routing.module';
-import {RouteReuseStrategy} from '@angular/router';
+import { BrowserModule } from '@angular/platform-browser';
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
+import { HttpClientModule } from '@angular/common/http';
+import { RouteReuseStrategy } from '@angular/router';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-import {IonicModule, IonicRouteStrategy} from '@ionic/angular';
-import {SplashScreen} from '@ionic-native/splash-screen/ngx';
-import {StatusBar} from '@ionic-native/status-bar/ngx';
+import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
+import { SplashScreen } from '@ionic-native/splash-screen/ngx';
+import { StatusBar } from '@ionic-native/status-bar/ngx';
 
-import {
-  AboutPageComponent,
-  AppLayoutComponent,
-  BattingTableComponent,
-  BowlingTableComponent,
-  CommentaryCardComponent,
-  CommentaryContainerComponent,
-  FullScoreCardComponent,
-  HeaderComponent,
-  HomePageComponent,
-  InningsCommentaryComponent,
-  MiniScoreCardComponent,
-  NewsCardComponent,
-  NewsPageComponent,
-  NewsViewComponent,
-  SocialIconComponent
-} from './components/index';
-
-import {
-  MatButtonModule,
-  MatCardModule,
-  MatDialogModule,
-  MatIconModule,
-  MatListModule,
-  MatMenuModule,
-  MatProgressSpinnerModule,
-  MatSidenavModule,
-  MatSlideToggleModule,
-  MatTableModule,
-  MatTabsModule,
-  MatToolbarModule
-} from '@angular/material';
-
-
-import {RunsWicketsDeclaredPipe} from './components/pipe/runs-wickets-declared/runs-wickets-declared.pipe';
-import {CommentaryHeaderPipe} from './components/pipe/commentary-header.pipe';
-import {CommentaryTextPipe} from './components/pipe/commentary-text.pipe';
-import {MatchTimePipe} from './components/pipe/match-time.pipe';
+import { ScoreCardModule } from './components/score-card/score-card.module';
+import { AppRoutesModule } from './components/routes/app-routes.module';
+import { AppLayoutComponent } from './components/layout/app-layout/app-layout.component';
+import { HeaderComponent } from './components/layout/header-component/app-header.component';
+import { AppRoutingModule } from './app-routing.module';
 
 @NgModule({
   declarations: [
     AppLayoutComponent,
     HeaderComponent,
-    HomePageComponent,
-    FullScoreCardComponent,
-    AboutPageComponent,
-    SocialIconComponent,
-    MiniScoreCardComponent,
-    BattingTableComponent,
-    BowlingTableComponent,
-    RunsWicketsDeclaredPipe,
-    CommentaryHeaderPipe,
-    CommentaryTextPipe,
-    CommentaryContainerComponent,
-    CommentaryCardComponent,
-    MatchTimePipe,
-    NewsViewComponent,
-    NewsCardComponent,
-    NewsPageComponent,
-    NewsArticleDialogComponent,
-    InningsCommentaryComponent
   ],
   imports: [
     BrowserModule,
     IonicModule.forRoot(),
     BrowserAnimationsModule,
-    MatButtonModule,
-    MatMenuModule,
-    MatToolbarModule,
-    MatIconModule,
-    MatCardModule,
-    MatDialogModule,
-    MatTabsModule,
-    MatTableModule,
-    MatProgressSpinnerModule,
-    MatSlideToggleModule,
-    MatSidenavModule,
-    MatListModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    ScoreCardModule,
+    AppRoutesModule
   ],
-  entryComponents: [FullScoreCardComponent, NewsArticleDialogComponent],
+  entryComponents: [],
   bootstrap: [AppLayoutComponent],
   providers: [
     StatusBar,
     SplashScreen,
-    {provide: RouteReuseStrategy, useClass: IonicRouteStrategy}
+    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
   schemas: [
     CUSTOM_ELEMENTS_SCHEMA
