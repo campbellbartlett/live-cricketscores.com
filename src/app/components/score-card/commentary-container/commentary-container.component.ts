@@ -1,4 +1,4 @@
-import {Component, Input, OnChanges, OnDestroy, OnInit} from '@angular/core';
+import {Component, Input, OnChanges, OnDestroy, OnInit, EventEmitter, Output} from '@angular/core';
 import {Commentary, Inning} from 'src/app/models/commentary';
 import {CricketDataService} from '../../../services/cricket-data.service';
 import {ToastController} from '@ionic/angular';
@@ -25,19 +25,33 @@ export class CommentaryContainerComponent implements OnInit, OnDestroy, OnChange
   @Input()
   public live: boolean;
 
+  @Output()
+  newCommentEvent = new EventEmitter<any>();
+
   public hasUpdate = false;
 
   public displayedInnings: Inning;
 
   private timer: NodeJS.Timer;
 
-  private hasShownToastSinceLastRefresh = false;
-
-  private dismissToast: () => void;
-
   private static totalBallsInInnings(innings): number {
     return innings.overs.map(over => over.balls.length)
       .reduce((sum, current) => sum + current, 0);
+  }
+
+  private static getNewCommentCount(newCommentary: Commentary, oldCommentary: Commentary): number {
+    let newBalls = 0;
+    let oldBalls = 0;
+
+    newCommentary.commentary.innings.forEach(innings => {
+      newBalls += CommentaryContainerComponent.totalBallsInInnings(innings);
+    });
+
+    oldCommentary.commentary.innings.forEach(innings => {
+      oldBalls += CommentaryContainerComponent.totalBallsInInnings(innings);
+    });
+
+    return newBalls - oldBalls;
   }
 
   ngOnInit() {
@@ -58,52 +72,23 @@ export class CommentaryContainerComponent implements OnInit, OnDestroy, OnChange
   public refreshCommentary() {
     const meta = this.matchCommentary.meta;
     this.hasUpdate = false;
-    this.dismissToast();
     this.cricketDataService.getCommentaryForMatchSeries(meta.matchId, meta.series.id)
       .then(freshCommentary => {
         this.matchCommentary.commentary.innings = freshCommentary.commentary.innings;
       });
+      this.newCommentEvent.emit(0);
   }
 
   private checkCommentaryForUpdate() {
     const meta = this.matchCommentary.meta;
     this.cricketDataService.getCommentaryForMatchSeries(meta.matchId, meta.series.id)
       .then(commentary => {
-        if (this.isInningsUpdated(commentary, this.matchCommentary)) {
+        const newCommentCount = CommentaryContainerComponent.getNewCommentCount(commentary, this.matchCommentary);
+        if (newCommentCount > 0) {
           this.hasUpdate = true;
-          if (!this.hasShownToastSinceLastRefresh) {
-            this.showNewCommentaryToast();
-          }
+          this.newCommentEvent.emit(newCommentCount);
         }
       });
-  }
-
-  private showNewCommentaryToast() {
-    this.presentNewCommentsToast(() => {
-      this.handleShowCommentaryClicked();
-    });
-  }
-
-  private handleShowCommentaryClicked() {
-    this.hasShownToastSinceLastRefresh = false;
-    this.hasUpdate = false;
-    this.refreshCommentary();
-    this.switchToTab();
-  }
-
-  private isInningsUpdated(commentary: Commentary, other: Commentary): boolean {
-    let numBalls = 0;
-    let otherBalls = 0;
-
-    commentary.commentary.innings.forEach(innings => {
-      numBalls += CommentaryContainerComponent.totalBallsInInnings(innings);
-    });
-
-    other.commentary.innings.forEach(innings => {
-      otherBalls += CommentaryContainerComponent.totalBallsInInnings(innings);
-    });
-
-    return numBalls !== otherBalls;
   }
 
   inningsSelected = event => {
@@ -113,29 +98,4 @@ export class CommentaryContainerComponent implements OnInit, OnDestroy, OnChange
       }
     }
   };
-
-  async presentNewCommentsToast(onShow: () => void) {
-    this.hasShownToastSinceLastRefresh = true;
-    const toast = await this.toastController.create({
-      header: 'Commentary Updated',
-      position: 'bottom',
-      buttons: [
-        {
-          side: 'start',
-          icon: 'chatbubbles',
-          text: 'Show',
-          handler: onShow
-        }, {
-          text: 'Dismiss',
-          icon: 'close',
-          role: 'cancel',
-          handler: () => {
-            console.log('Cancel clicked');
-          }
-        }
-      ]
-    });
-    toast.present();
-    this.dismissToast = () => toast.dismiss();
-  }
 }
