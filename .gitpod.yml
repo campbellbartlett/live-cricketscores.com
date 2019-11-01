@@ -8,4 +8,6 @@ ports:
 # List the start up tasks. You can start them in parallel in multiple terminals. See https://www.gitpod.io/docs/44_config_start_tasks/
 tasks:
 - init: echo 'init script' # runs during prebuild
+  init: npm install
   command: echo 'start script'
+  command: ./node_modules/ionic/bin/ionic server -- --disable-host-check
