@@ -1,0 +1,8 @@
+.outerContainer {
+  overflow-x: scroll;
+
+  .graphWrap {
+    min-width: 700px;
+    overflow-x: auto;
+  }
+}

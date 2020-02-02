@@ -19,6 +19,8 @@ import { CommentaryHeaderPipe } from '../pipe/commentary-header.pipe';
 import { MatchTimePipe } from '../pipe/match-time.pipe';
 import { GameStatusComponent } from './game-status/game-status.component';
 import { InningsScoreCardComponent } from './innings-score-card/innings-score-card.component';
+import { InningGraphComponent } from './inning-graph/inning-graph.component';
+import { ChartsModule } from 'ng2-charts';
 
 @NgModule({
   imports: [
@@ -44,6 +46,7 @@ import { InningsScoreCardComponent } from './innings-score-card/innings-score-ca
     MatTableModule,
     MatTabsModule,
     MatToolbarModule,
+    ChartsModule
   ],
   entryComponents: [FullScoreCardComponent],
   declarations: [
@@ -56,6 +59,7 @@ import { InningsScoreCardComponent } from './innings-score-card/innings-score-ca
     InningsCommentaryComponent,
     GameStatusComponent,
     InningsScoreCardComponent,
+    InningGraphComponent,
     RunsWicketsDeclaredPipe,
     CommentaryHeaderPipe,
     CommentaryTextPipe,
