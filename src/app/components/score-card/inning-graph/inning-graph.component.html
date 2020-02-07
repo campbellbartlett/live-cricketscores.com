@@ -1,0 +1,11 @@
+<div *ngIf="manhattanChart.data.length > 0 && manhattanChart.labels.length > 0"
+     class="ion-margin outerContainer">
+  <div class="graphWrap">
+    <canvas [datasets]="manhattanChart.data"
+            [labels]="manhattanChart.labels"
+            [options]="manhattanChart.options"
+            baseChart
+            chartType="bar">
+    </canvas>
+  </div>
+</div>

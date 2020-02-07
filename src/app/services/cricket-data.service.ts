@@ -4,6 +4,7 @@ import {Match, Matches} from '../models';
 import {ScoreCard} from '../models';
 import {Commentary} from '../models/commentary';
 import {MatchResponse} from '../models/match';
+import {GraphBase} from '../models/graph';
 
 const moment = require('moment');
 
@@ -54,6 +55,15 @@ export class CricketDataService {
         }
         return match;
       })
+      .catch(CricketDataService.handleError);
+  }
+
+  public getGraphForMatchSeries(match: number, series: number): Promise<GraphBase> {
+    const url = `${this.apiBaseUrl}graph/${series}/${match}`;
+    return this.http
+      .get(url)
+      .toPromise()
+      .then(response => response as GraphBase)
       .catch(CricketDataService.handleError);
   }
 

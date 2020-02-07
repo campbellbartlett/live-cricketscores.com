@@ -18,6 +18,12 @@
       <app-commentary-container (newCommentEvent)="updateCommentCount($event)" [matchCommentary]="matchCommentary" [live]="live" [switchToTab]='switchToCommentaryTab'>
       </app-commentary-container>
     </div>
+    <div class='content' [hidden]="scorecard.innings.length + 2 != selectedTab">
+      <app-inning-graph>
+      </app-inning-graph>
+        <h3 class="text-center mt-5">Inning Graph</h3>
+        <app-inning-graph [matchId]="match.id" [seriesId]="match.series.id"></app-inning-graph>
+    </div>
   </div>
 </ion-content>
 <ion-content *ngIf="scorecard == null && match">
@@ -34,6 +40,10 @@
         Commentary
         <ion-icon class="commentary-icon" name="chatboxes"></ion-icon>
         <ion-badge *ngIf="newCommentCount > 0" class="commentary-badge">{{newCommentCount}}</ion-badge>
+      </ion-segment-button>
+      <ion-segment-button mode="md" value="{{scorecard.innings.length + 2}}">
+        Overview
+        <ion-icon class="commentary-icon" name="eye"></ion-icon>
       </ion-segment-button>
     </ion-segment>
   </ion-toolbar>
