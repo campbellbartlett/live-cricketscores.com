@@ -18,7 +18,7 @@ export class CricketDataService {
   constructor(private http: HttpClient) {
   }
 
-  private apiBaseUrl = 'https://api.cricket.com.au/';
+  private apiBaseUrl = 'http://api.cricket.com.au/';
 
   // the default value for this is 1 month if no date is specified
   // however during periods when there are no matches for extended periods
