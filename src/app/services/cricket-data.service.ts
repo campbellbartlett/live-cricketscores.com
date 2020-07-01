@@ -20,13 +20,19 @@ export class CricketDataService {
 
   private apiBaseUrl = 'https://api.cricket.com.au/';
 
+  // the default value for this is 1 month if no date is specified
+  // however during periods when there are no matches for extended periods
+  // (COVID 19) the API will start returning no completed matches.
+  // The API will still only return 5 completed matches at once.
+  private earliestCompletedMatchDate = '2020-01-01T17%3A00%3A00Z'
+
   private static handleError(error: any): Promise<any> {
     console.error('Something has gone wrong', error);
     return Promise.reject(error.message || error);
   }
 
   public getCurrentMatches(): Promise<Matches> {
-    const url = `${this.apiBaseUrl}matches?completedLimit=5&upcomingLimit=5`;
+    const url = `${this.apiBaseUrl}matches?completedLimit=5&upcomingLimit=5&startDate=${this.earliestCompletedMatchDate}`;
     return this.http
       .get(url)
       .toPromise()
@@ -59,7 +65,7 @@ export class CricketDataService {
   }
 
   public getGraphForMatchSeries(match: number, series: number): Promise<GraphBase> {
-    const url = `${this.apiBaseUrl}graph/${series}/${match}`;
+    const url = `${this.apiBaseUrl}graph/${series}/${match}?format=json`;
     return this.http
       .get(url)
       .toPromise()
@@ -68,7 +74,7 @@ export class CricketDataService {
   }
 
   public getScorecardForMatchSeries(match: number, series: number): Promise<ScoreCard> {
-    const url = `${this.apiBaseUrl}scorecards/full/${series}/${match}?IncludeVideoReplays=false`;
+    const url = `${this.apiBaseUrl}scorecards/full/${series}/${match}?IncludeVideoReplays=false&format=json`;
     return this.http
       .get(url)
       .toPromise()
@@ -77,7 +83,7 @@ export class CricketDataService {
   }
 
   public getCommentaryForMatchSeries(match: number, series: number): Promise<Commentary> {
-    const url = `${this.apiBaseUrl}/comments/${series}/${match}?IncludeVideoReplays=false`;
+    const url = `${this.apiBaseUrl}/comments/${series}/${match}?IncludeVideoReplays=false&format=json`;
     return this.http
       .get(url)
       .toPromise()
