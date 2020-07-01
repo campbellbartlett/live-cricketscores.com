@@ -19,7 +19,7 @@ export class NewsDataService {
     private apiBaseUrl = 'https://api.cricket.com.au/';
 
     public getLatestNews(): Promise<News> {
-        const url: string = `${this.apiBaseUrl}news`;
+        const url: string = `${this.apiBaseUrl}news?format=json`;
         return this.http
             .get(url)
             .toPromise()
